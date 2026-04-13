@@ -1,0 +1,38 @@
+---
+kind: passive-capture
+source_name: "Google AI Blog"
+source_type: primaire
+category: ai-news
+tags: [ia, google, gemini, news]
+title: "Create, edit and share videos at no cost in Google Vids"
+url: "https://blog.google/products-and-platforms/products/workspace/google-vids-updates-lyria-veo/"
+published_at: "2026-04-02T16:00:00.000Z"
+collected_at: "2026-04-13T19:45:47.982Z"
+confidence: high
+major_update: false
+workflow: passive-news-cli
+status: a-traiter
+---
+
+# Create, edit and share videos at no cost in Google Vids
+
+## Metadonnees
+- Source : Google AI Blog
+- Type : primaire
+- Categorie : ai-news
+- URL : https://blog.google/products-and-platforms/products/workspace/google-vids-updates-lyria-veo/
+- Publie le : 2026-04-02T16:00:00.000Z
+- Collecte le : 2026-04-13T19:45:47.982Z
+- Niveau de confiance : high
+
+## Extrait brut
+New AI capabilities are coming to Google Vids, powered by Lyria 3 and Veo 3.1, like high-quality video generation at no cost and more.
+
+## Resume IA preliminaire
+- Resume IA non structure disponible, a relire manuellement.
+
+## Points a verifier
+- Confirmer les details techniques si cette entree devient une vraie note.
+
+## Action possible
+- [ ] Decider si cette entree merite une vraie note dans `wiki/notes/`

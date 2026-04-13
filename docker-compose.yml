@@ -14,7 +14,9 @@ services:
       - WEBHOOK_URL=${WEBHOOK_URL}
       - GENERIC_TIMEZONE=Europe/Paris
       - N8N_SECURE_COOKIE=false
+      - N8N_RESTRICT_FILE_ACCESS_TO=${N8N_RESTRICT_FILE_ACCESS_TO}
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     volumes:
       - ./n8n_data:/home/node/.n8n
       - ./veille-vault:/vault

@@ -13,6 +13,10 @@ Bienvenue dans le système de veille.
 - [[rituals]] : Rituels quotidiens, hebdomadaires et mensuels du système de veille.
 - [[respect-llm-wiki]] : Explique pourquoi ce vault respecte le pattern LLM Wiki sans devenir trop compliqué.
 
+## Methodes & Templates
+- [[template-decision-incorporation]] : Grille simple pour décider si une capture doit devenir une vraie note du vault.
+- [[template-note-de-veille]] : Gabarit normalise pour transformer une capture retenue en vraie note dans `wiki/notes/`.
+
 ## Sources & Outils
 *(Liste mise à jour automatiquement par l'IA)*
 - [Source Active : LLM Wiki (Andrej Karpathy)](../raw/active/llm-wiki.md)

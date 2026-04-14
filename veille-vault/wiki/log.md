@@ -48,3 +48,13 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Création de `wiki/notes/pipeline-de-veille.md` pour expliciter les étapes `collecte -> tri -> analyse -> synthese -> diffusion`.
 - Ajout d'un schéma Mermaid réutilisable pour la démonstration du système de veille.
 - Mise à jour de `wiki/index.md` pour intégrer cette note de méthode au point d'entrée du vault.
+
+## [2026-04-14] methode | Ajout du template de decision d'incorporation
+- Création de `wiki/template-decision-incorporation.md` pour décider si une capture mérite une vraie note dans `wiki/notes/`.
+- Ajout d'une checklist rapide, d'une grille de pertinence et d'une règle spécifique pour `GitHub Trending`.
+- Mise à jour de `wiki/index.md` pour rendre ce template visible depuis le point d'entrée du vault.
+
+## [2026-04-14] methode | Ajout du template de note de veille
+- Création de `wiki/template-note-de-veille.md` comme gabarit normalisé pour écrire une vraie note dans `wiki/notes/`.
+- Ajout d'une version complète et d'une version courte pour garder une friction faible.
+- Mise à jour de `wiki/index.md` pour exposer ce template de rédaction depuis le point d'entrée du vault.

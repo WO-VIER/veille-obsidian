@@ -58,3 +58,13 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Création de `wiki/template-note-de-veille.md` comme gabarit normalisé pour écrire une vraie note dans `wiki/notes/`.
 - Ajout d'une version complète et d'une version courte pour garder une friction faible.
 - Mise à jour de `wiki/index.md` pour exposer ce template de rédaction depuis le point d'entrée du vault.
+
+## [2026-04-14] methode | Ajout du pipeline d'incorporation d'une note
+- Création de `wiki/pipeline-incorporation-note.md` pour expliciter le passage `raw/active ou raw/passive -> decision -> wiki/notes/`.
+- Ajout d'un schéma Mermaid et d'une checklist opérationnelle orientée Obsidian Clipper et veille passive.
+- Mise à jour de `wiki/index.md` pour relier ce pipeline aux autres méthodes du vault.
+
+## [2026-04-14] [ACTIVE] ingest | LLM Wiki et veille technologique
+- Lecture des sources `raw/active/llm-wiki.md` et `raw/active/Thread by @karpathy.md`.
+- Transformation du brouillon `wiki/LLM wiki et veille.md` en vraie note `wiki/notes/llm-wiki-et-veille.md`.
+- Mise à jour de `wiki/index.md` pour référencer cette nouvelle note et correction du lien Obsidian vers `llm-wiki`.

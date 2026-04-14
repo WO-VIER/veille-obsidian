@@ -2,18 +2,17 @@
 trigger: always_on
 ---
 
-# AGENTS - Règles simples du veille-vault
-
-Ce vault sert à la veille technologique dans Obsidian.
-Il doit rester simple, lisible et fidèle au cours 5XVTE.
+# AGENTS - Regles du veille-vault
 
 ## Mission
 
+- maintenir un wiki persistant de veille agentique dans Obsidian ;
+- suivre en priorite l'ecosysteme des CLI agentiques, des modeles IA, des workflows d'agents et des outils de knowledge management relies ;
 - respecter la séparation entre collecte et synthèse ;
 - garder une structure à faible friction ;
 - aider à produire de vraies notes de veille ;
 - éviter les architectures compliquées sans besoin réel ;
-- faire du wiki un espace utile pour lire, relier et présenter.
+- faire du wiki un espace utile pour lire, relier, décider et presenter.
 
 ## Architecture à respecter
 
@@ -35,6 +34,18 @@ Règles :
 - `index.md` sert de point d'entrée ;
 - `log.md` garde la trace des changements importants.
 
+## Foyer principal de veille
+
+Le sujet principal du vault est la veille agentique :
+
+- CLI agentiques ;
+- modeles IA et annonces associees ;
+- releases d'outils comme `Codex`, `Claude Code`, `Gemini CLI`, `OpenCode` ;
+- plateformes et orchestrateurs d'agents ;
+- signaux secondaires comme `GitHub Trending` quand ils aident a detecter une tendance.
+
+Des sujets adjacents peuvent entrer dans le vault seulement s'ils eclairent ce noyau principal.
+
 ## Avant toute modification importante
 
 Lire dans cet ordre :
@@ -54,17 +65,20 @@ Lire dans cet ordre :
 - écrire en français par défaut ;
 - utiliser des noms de fichiers en `kebab-case.md` ;
 - mettre à jour `wiki/index.md` et `wiki/log.md` après une modification importante.
+- accepter qu'un humain puisse refuser, supprimer ou remplacer une note sans justification supplementaire ;
+- traiter toute note produite par l'agent comme une proposition editable, pas comme un contenu intangible.
 
 ## Place de l'automatisation
 
-Le cours autorise et encourage l'automatisation d'une partie de la collecte avec n8n.
-En revanche, la note de veille finale doit rester un travail humain ou humain assisté.
+L'automatisation sert surtout a la collecte, au pre-tri et au brouillon.
+La note de veille finale reste un travail humain ou humain assiste.
 
 Donc :
 
 - n8n peut écrire dans `raw/passive/` ;
 - l'IA peut produire un résumé préliminaire ;
 - la vraie note finale doit vivre dans `wiki/notes/`.
+- l'humain garde la decision editoriale finale : incorporer, ignorer, supprimer, fusionner ou reecrire.
 
 Pour la veille passive, la sortie attendue dans le vault est un fichier Markdown standardisé.
 Le JSON peut exister dans n8n pendant le workflow, mais il ne doit pas être stocké tel quel dans le vault.
@@ -104,9 +118,15 @@ Quand un fichier arrive dans `raw/passive/` :
 
 1. le traiter comme matériau de travail ;
 2. vérifier si le sujet mérite une vraie note ;
-3. si oui, créer ou enrichir une note dans `wiki/notes/` ;
+3. si oui, creer ou enrichir une note dans `wiki/notes/` ;
 4. relier cette note aux autres notes pertinentes ;
 5. mettre à jour `wiki/index.md` et `wiki/log.md`.
+
+Regle importante :
+
+- ne pas creer une note pour chaque micro-release ;
+- si plusieurs captures parlent du meme outil ou du meme theme, preferer une note de synthese ou une note de suivi ;
+- `GitHub Trending` sert surtout de signal, pas de preuve autonome.
 
 Le fichier `raw/passive/` doit idéalement contenir :
 
@@ -126,6 +146,8 @@ Quand une source arrive dans `raw/active/` :
 4. ajouter les liens utiles ;
 5. garder la source visible dans la note.
 
+Les sources `Obsidian Clipper` sont traitees comme des sources de travail, pas comme des notes finales.
+
 ## Confiance dans les sources
 
 Classer les sources en :
@@ -140,6 +162,13 @@ Règles :
 - une source secondaire peut nourrir la compréhension ;
 - une source primaire est à privilégier pour les faits techniques.
 
+Pour la veille agentique :
+
+- une release officielle est une source primaire ;
+- une page produit ou une annonce officielle reste primaire mais peut etre promotionnelle ;
+- `GitHub Trending` est secondaire ;
+- un thread social peut faire emerger un angle, mais doit etre recoupe pour les points importants.
+
 ## Ce qui fait un bon travail d'agent ici
 
 - moins de friction ;
@@ -147,5 +176,5 @@ Règles :
 - plus de bonnes notes ;
 - plus de liens utiles ;
 - plus de clarté ;
-- plus de cohérence avec le cours ;
+- plus de syntheses utiles sur l'ecosysteme agentique ;
 - moins de complexité artificielle.

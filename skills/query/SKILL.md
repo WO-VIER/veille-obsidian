@@ -1,11 +1,11 @@
 ---
 name: query
-description: Interroger le wiki de veille et repondre a partir des notes avant les sources brutes
-version: 1.0.0
+description: Interroger le wiki de veille agentique en partant des notes avant les sources brutes
+version: 1.1.0
 platforms: [linux]
 metadata:
   hermes:
-    tags: [veille, obsidian, wiki, query]
+    tags: [veille, obsidian, wiki, query, agents]
     category: knowledge
     requires_toolsets: [terminal]
     config:
@@ -17,7 +17,7 @@ metadata:
 
 # Query
 
-Interroger le wiki de veille pour répondre rapidement et proprement à une question.
+Interroger le wiki de veille pour repondre rapidement et proprement a une question sur l'ecosysteme agentique.
 
 Ce skill est pensé pour rester compatible avec plusieurs agents/CLI.
 Les champs `metadata.hermes` servent seulement à améliorer son intégration dans Hermes.
@@ -29,12 +29,14 @@ Utiliser ce skill quand l'utilisateur veut :
 - retrouver ce que le wiki dit déjà sur un sujet ;
 - comparer plusieurs notes ;
 - répondre à une question sans repartir de zéro dans `raw/`.
+- faire le point sur un outil, une release, un modele ou une tendance deja couverts.
 
 Déclencheurs typiques :
 
 - `/query que dit mon wiki sur llm wiki`
 - `/query compare codex et claude code dans mes notes`
 - `/query quelles actus ia récentes méritent une note`
+- `/query que dit mon wiki sur les cli agentiques`
 
 ## Procedure
 
@@ -47,12 +49,13 @@ Déclencheurs typiques :
    - `${vault_path}/wiki/index.md`
    - les sections pertinentes de `${vault_path}/wiki/log.md`
    - les notes de `${vault_path}/wiki/notes/` liées à la question
-3. Répondre d'abord à partir du wiki.
-4. Si le wiki ne suffit pas, remonter vers les sources dans `raw/`.
-5. Citer clairement :
+3. Prioriser les notes de synthese et les notes de tendance avant les captures brutes.
+4. Répondre d'abord à partir du wiki.
+5. Si le wiki ne suffit pas, remonter vers les sources dans `raw/`.
+6. Citer clairement :
    - les notes utilisées ;
    - et si nécessaire les sources brutes associées.
-6. Si la réponse produit une connaissance durable, proposer de la sauver comme nouvelle note dans `wiki/notes/`.
+7. Si la réponse produit une connaissance durable, proposer de la sauver comme nouvelle note dans `wiki/notes/`.
 
 ## Important Rules
 
@@ -60,12 +63,15 @@ Déclencheurs typiques :
 - Répondre avec précision plutôt qu'avec volume.
 - Distinguer clairement ce qui vient d'une note et ce qui vient d'une source brute.
 - Ne pas créer une note automatiquement sauf si l'utilisateur le demande ou si la demande implique explicitement une capitalisation.
+- Mentionner explicitement les zones d'incertitude quand le wiki reste trop factuel ou incomplet.
+- Pour les questions de tendance, separer les faits verifies des hypotheses.
 
 ## Pitfalls
 
 - Ne pas ignorer `wiki/index.md`.
 - Ne pas répondre uniquement depuis la mémoire conversationnelle.
 - Ne pas inventer que le wiki contient quelque chose si ce n'est pas le cas.
+- Ne pas surinterpreter une simple accumulation de releases comme une tendance lourde sans le dire.
 
 ## Verification
 

@@ -7,12 +7,21 @@ Objectif :
 - garder les skills à la racine du projet ;
 - pouvoir les exporter facilement vers n'importe quel agent ou CLI compatible `SKILL.md` ;
 - éviter une structure trop spécifique à un seul outil.
+- piloter un vault de veille centre sur l'ecosysteme agentique.
 
 ## Skills fournis
 
 - `ingest`
 - `query`
 - `lint`
+
+Ces skills sont pensés pour un vault qui suit surtout :
+
+- les CLI agentiques ;
+- les modeles IA et leurs annonces ;
+- les releases ;
+- les signaux de tendance comme `GitHub Trending` ;
+- les notes de synthese et de decision dans Obsidian.
 
 ## Installation portable
 

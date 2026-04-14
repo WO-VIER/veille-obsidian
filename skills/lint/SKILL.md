@@ -1,11 +1,11 @@
 ---
 name: lint
-description: Verifier la coherence du vault de veille et signaler les problemes structurels
-version: 1.0.0
+description: Verifier la coherence du vault de veille agentique et signaler les problemes structurels
+version: 1.1.0
 platforms: [linux]
 metadata:
   hermes:
-    tags: [veille, obsidian, wiki, lint]
+    tags: [veille, obsidian, wiki, lint, agents]
     category: knowledge
     requires_toolsets: [terminal]
     config:
@@ -17,7 +17,7 @@ metadata:
 
 # Lint
 
-Vérifier la santé du vault de veille.
+Verifier la sante du vault de veille.
 
 Ce skill est pensé pour rester compatible avec plusieurs agents/CLI.
 Les champs `metadata.hermes` servent seulement à améliorer son intégration dans Hermes.
@@ -30,6 +30,7 @@ Utiliser ce skill quand l'utilisateur veut :
 - vérifier les liens cassés ;
 - repérer les notes sans sources ;
 - contrôler la cohérence entre `index.md`, `log.md` et `wiki/notes/`.
+- verifier que la veille agentique ne se transforme pas en accumulation de captures sans synthese.
 
 Déclencheurs typiques :
 
@@ -56,8 +57,13 @@ Déclencheurs typiques :
    - doublons évidents ;
    - entrées passives anciennes encore jamais transformées en notes ;
    - incohérences de nommage.
-5. Produire d'abord un rapport de findings.
-6. Ne corriger automatiquement que si l'utilisateur le demande explicitement.
+5. Vérifier en plus pour ce vault :
+   - micro-releases multipliees sans note de synthese par outil ;
+   - notes de tendance sans source primaire ou sans mention des limites ;
+   - captures `GitHub Trending` promues en notes sans recul critique ;
+   - notes laissees a la racine de `wiki/` au lieu de `wiki/notes/`.
+6. Produire d'abord un rapport de findings.
+7. Ne corriger automatiquement que si l'utilisateur le demande explicitement.
 
 ## Important Rules
 
@@ -65,12 +71,14 @@ Déclencheurs typiques :
 - Donner les chemins de fichiers.
 - Quand possible, mentionner la ligne ou au moins la section concernée.
 - Ne pas faire de changements silencieux.
+- Prioriser les problemes qui nuisent a la lecture, a la credibilite ou a la reutilisation du vault.
 
 ## Pitfalls
 
 - Ne pas confondre une note peu liée et une note inutile.
 - Ne pas exiger une section `Sources` pour un simple fichier purement opérationnel comme `README.md`.
 - Ne pas réécrire le vault entier pour une anomalie mineure.
+- Ne pas demander une note pour chaque capture passive.
 
 ## Verification
 

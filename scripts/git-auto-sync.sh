@@ -5,7 +5,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BRANCH="${1:-main}"
 TIMESTAMP="$(date '+%Y-%m-%d %H:%M:%S %Z')"
-COMMIT_PREFIX="${COMMIT_PREFIX:-chore: sync veille vault}"
+COMMIT_PREFIX="${COMMIT_PREFIX:-sync veille vault}"
 DRY_RUN="${DRY_RUN:-0}"
 
 cd "$REPO_ROOT"

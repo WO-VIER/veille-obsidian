@@ -1,0 +1,418 @@
+[
+  {
+    "id": "G7sT8vL2mN4pQ6rS",
+    "name": "GitHub Trending Weekly",
+    "description": "Recupere GitHub Trending weekly et ecrit un rapport Markdown dans /vault/raw/passive/",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "weeks",
+                "weeksInterval": 1,
+                "triggerAtDay": [
+                  1
+                ],
+                "triggerAtHour": 9,
+                "triggerAtMinute": 0
+              }
+            ]
+          }
+        },
+        "id": "8e29dc7c-c97c-4d65-8c32-e71eacfa53c3",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "parameters": {},
+        "id": "c06b7f86-aa57-4be9-9a0c-79b5c3db8a13",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          180
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://github.com/trending?since=weekly",
+          "options": {}
+        },
+        "id": "0fc47549-995c-42f9-9c94-159a7a5cc8ea",
+        "name": "Request GitHub Trending Weekly",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          220,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "extractHtmlContent",
+          "extractionValues": {
+            "values": [
+              {
+                "key": "box",
+                "cssSelector": "div.Box",
+                "returnValue": "html"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "362a6b67-aa8f-4968-884f-278ba038f9ad",
+        "name": "Extract Box",
+        "type": "n8n-nodes-base.html",
+        "typeVersion": 1.2,
+        "position": [
+          460,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "extractHtmlContent",
+          "dataPropertyName": "box",
+          "extractionValues": {
+            "values": [
+              {
+                "key": "repositories",
+                "cssSelector": "article.Box-row",
+                "returnValue": "html",
+                "returnArray": true
+              }
+            ]
+          },
+          "options": {
+            "trimValues": true,
+            "cleanUpText": true
+          }
+        },
+        "id": "ee240beb-b7af-44b1-aa40-aa3c7936f7f2",
+        "name": "Extract All Repositories",
+        "type": "n8n-nodes-base.html",
+        "typeVersion": 1.2,
+        "position": [
+          700,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "repositories",
+          "options": {}
+        },
+        "id": "f0ddc69f-e895-4420-b5d0-80d318826f81",
+        "name": "Split Repositories",
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          940,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "extractHtmlContent",
+          "dataPropertyName": "repositories",
+          "extractionValues": {
+            "values": [
+              {
+                "key": "repository",
+                "cssSelector": "a.Link"
+              },
+              {
+                "key": "language",
+                "cssSelector": "[itemprop=\"programmingLanguage\"]"
+              },
+              {
+                "key": "description",
+                "cssSelector": "p"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "f1b9c2bb-d9d2-47ca-a6e9-0a0dd63db9f7",
+        "name": "Extract Repository Data",
+        "type": "n8n-nodes-base.html",
+        "typeVersion": 1.2,
+        "position": [
+          1180,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5d92cc41-5e48-4f0b-a07a-72f4f897f5fe",
+                "name": "author",
+                "type": "string",
+                "value": "={{ $json.repository.split('/')[0].trim() }}"
+              },
+              {
+                "id": "c303861c-b3a1-4335-8f07-60f8dbe8572a",
+                "name": "title",
+                "type": "string",
+                "value": "={{ $json.repository.split('/')[1].trim() }}"
+              },
+              {
+                "id": "b7da3d83-8c2d-4ea7-b434-9048da4d0dc2",
+                "name": "repository",
+                "type": "string",
+                "value": "={{ $json.repository }}"
+              },
+              {
+                "id": "24989dc4-92c4-405a-8c2c-375d20d8eea2",
+                "name": "url",
+                "type": "string",
+                "value": "=https://github.com/{{ $json.repository.replaceAll(' ','') }}"
+              },
+              {
+                "id": "9efff861-3157-4d76-b2f8-41364516fef4",
+                "name": "created_at",
+                "type": "string",
+                "value": "={{$now}}"
+              },
+              {
+                "id": "9a7f9004-4d69-4f69-ae2f-4f81059ff320",
+                "name": "description",
+                "type": "string",
+                "value": "={{ $json.description }}"
+              },
+              {
+                "id": "e3baf7fd-4120-464d-a113-537d61d274ad",
+                "name": "language",
+                "type": "string",
+                "value": "={{ $json.language }}"
+              }
+            ]
+          },
+          "includeOtherFields": false,
+          "options": {}
+        },
+        "id": "53ca8f54-d0ea-46e5-ac16-41cb8bbf60f7",
+        "name": "Set Trending Variables",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1420,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const items = $input.all().map(i => i.json).slice(0, 10);\nconst datePart = new Date().toISOString().slice(0,10);\nconst lines = items.map((repo, index) => {\n  const title = `${index + 1}. ${repo.repository}`;\n  const desc = repo.description ? repo.description.trim() : 'Pas de description.';\n  const lang = repo.language ? repo.language.trim() : 'Langage non pr\u00e9cis\u00e9';\n  return `- ${title}\\n  - URL : ${repo.url}\\n  - Langage : ${lang}\\n  - Description : ${desc}`;\n});\nconst markdown = `---\\nkind: passive-capture\\nsource_name: \"GitHub Trending Weekly\"\\nsource_type: secondaire\\ncategory: github-trending\\ntags: [github, trending, weekly, veille]\\ntitle: \"GitHub Trending Weekly - ${datePart}\"\\nurl: \"https://github.com/trending?since=weekly\"\\npublished_at: \"${new Date().toISOString()}\"\\ncollected_at: \"${new Date().toISOString()}\"\\nconfidence: medium\\nworkflow: github-trending-weekly\\nstatus: a-traiter\\n---\\n\\n# GitHub Trending Weekly - ${datePart}\\n\\n## Metadonnees\\n- Source : GitHub Trending\\n- Type : secondaire\\n- URL : https://github.com/trending?since=weekly\\n- Portee : top 10 repositories visibles au moment de la collecte\\n\\n## Repositories\\n${lines.join('\\n')}\\n\\n## Action possible\\n- [ ] Decider si un ou plusieurs repositories meritent une vraie note dans \\`wiki/notes/\\`\\n`;\nreturn [{json:{outputPath:`/vault/raw/passive/${datePart}-github-trending-weekly.md`, markdown}}];"
+        },
+        "id": "1e9e125b-1cc9-46ae-a916-c56df631fd32",
+        "name": "Build Weekly Trending Markdown",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1660,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "toText",
+          "binaryPropertyName": "data",
+          "sourceProperty": "markdown",
+          "options": {
+            "fileName": "={{$json.outputPath}}",
+            "mimeType": "text/markdown",
+            "encoding": "utf8"
+          }
+        },
+        "id": "7d3618d3-27d7-4f7d-8406-c3c595b4f2ba",
+        "name": "Convert Trending Markdown To File",
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1,
+        "position": [
+          1890,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
+        },
+        "id": "3793839c-6fbc-4d85-b404-a2f50b02225d",
+        "name": "Restore Trending Output Path",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          2040,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "fileName": "={{$json.outputPath}}",
+          "dataPropertyName": "data",
+          "options": {}
+        },
+        "id": "76155101-350d-4f44-91f1-b1aeeea77172",
+        "name": "Write Trending Capture",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          2210,
+          80
+        ]
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Request GitHub Trending Weekly",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "Request GitHub Trending Weekly",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Request GitHub Trending Weekly": {
+        "main": [
+          [
+            {
+              "node": "Extract Box",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Box": {
+        "main": [
+          [
+            {
+              "node": "Extract All Repositories",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract All Repositories": {
+        "main": [
+          [
+            {
+              "node": "Split Repositories",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Repositories": {
+        "main": [
+          [
+            {
+              "node": "Extract Repository Data",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Repository Data": {
+        "main": [
+          [
+            {
+              "node": "Set Trending Variables",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Trending Variables": {
+        "main": [
+          [
+            {
+              "node": "Build Weekly Trending Markdown",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Weekly Trending Markdown": {
+        "main": [
+          [
+            {
+              "node": "Convert Trending Markdown To File",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Restore Trending Output Path",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Convert Trending Markdown To File": {
+        "main": [
+          [
+            {
+              "node": "Restore Trending Output Path",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Restore Trending Output Path": {
+        "main": [
+          [
+            {
+              "node": "Write Trending Capture",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "binaryMode": "separate"
+    },
+    "staticData": null,
+    "meta": {},
+    "pinData": {},
+    "tags": []
+  }
+]

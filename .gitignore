@@ -1,3 +1,5 @@
 .env
 n8n_data/
 *.json
+!n8n-workflows/
+!n8n-workflows/*.json

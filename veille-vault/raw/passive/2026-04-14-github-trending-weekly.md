@@ -6,8 +6,8 @@ category: github-trending
 tags: [github, trending, weekly, veille]
 title: "GitHub Trending Weekly - 2026-04-14"
 url: "https://github.com/trending?since=weekly"
-published_at: "2026-04-14T08:52:55.726Z"
-collected_at: "2026-04-14T08:52:55.726Z"
+published_at: "2026-04-14T09:11:53.483Z"
+collected_at: "2026-04-14T09:11:53.483Z"
 confidence: medium
 workflow: github-trending-weekly
 status: a-traiter
@@ -24,12 +24,7 @@ status: a-traiter
 ## Repositories
 - 1. forrestchang / andrej-karpathy-skills
   - URL : https://github.com/forrestchang/andrej-karpathy-skills
-  - Langage : Built by @forrestchang
-[https://avatars.githubusercontent.com/u/7857126?s=40&v=4]/forrestchang @claude
-[https://avatars.githubusercontent.com/u/81847?s=40&v=4]/claude @back1ply
-[https://avatars.githubusercontent.com/u/45536170?s=40&v=4]/back1ply @szkocot
-[https://avatars.githubusercontent.com/u/478549?s=40&v=4]/szkocot @TomBener
-[https://avatars.githubusercontent.com/u/49151155?s=40&v=4]/TomBener
+  - Langage : Langage non précisé
   - Description : A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej
 Karpathy's observations on LLM coding pitfalls.
 - 2. NousResearch / hermes-agent

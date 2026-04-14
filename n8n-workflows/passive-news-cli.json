@@ -1,0 +1,673 @@
+[
+  {
+    "id": "P4YekbJ4c5L2QmN9",
+    "name": "Passive News CLI",
+    "description": "Collecte RSS officielle pour actus IA et releases CLI, r\u00e9sume via OpenRouter et \u00e9crit des captures Markdown dans /vault/raw/passive/",
+    "active": false,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "hours",
+                "hoursInterval": 12
+              }
+            ]
+          }
+        },
+        "id": "4446a5eb-f7f1-42e2-8dd0-8f3692e65e6e",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.3,
+        "position": [
+          0,
+          0
+        ]
+      },
+      {
+        "parameters": {},
+        "id": "96b1ba28-bf53-4e62-a2e8-14dd8e91f455",
+        "name": "Manual Trigger",
+        "type": "n8n-nodes-base.manualTrigger",
+        "typeVersion": 1,
+        "position": [
+          0,
+          200
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://openai.com/news/rss.xml",
+          "options": {}
+        },
+        "id": "80cefa8a-502f-4837-9d3d-f5bb03f1c1b7",
+        "name": "RSS OpenAI News",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          -240
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+          "options": {}
+        },
+        "id": "6241b1c5-adf7-4744-9389-1de3f90c8ab9",
+        "name": "RSS Google AI",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          -80
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://github.com/anthropics/claude-code/releases.atom",
+          "options": {}
+        },
+        "id": "ca4735fd-7fd4-4861-b9c5-4ba12a1435e6",
+        "name": "RSS Claude Code Releases",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://github.com/openai/codex/releases.atom",
+          "options": {}
+        },
+        "id": "f06d7bf8-58c0-4e14-a45d-9d0746f4cf81",
+        "name": "RSS Codex Releases",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          240
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://github.com/google-gemini/gemini-cli/releases.atom",
+          "options": {}
+        },
+        "id": "d3d9755f-1ec7-4fd1-8a6a-aab02d50356a",
+        "name": "RSS Gemini CLI Releases",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          400
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'OpenAI News';\nconst sourceType = 'primaire';\nconst category = 'ai-news';\nconst tags = ['ia', 'openai', 'news'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "af8d31ff-89ef-4f1f-b688-fab128df0c04",
+        "name": "Normalize OpenAI News",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          -240
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'Google AI Blog';\nconst sourceType = 'primaire';\nconst category = 'ai-news';\nconst tags = ['ia', 'google', 'gemini', 'news'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "4d33b208-a0f8-49b7-92be-8d83a93d9af1",
+        "name": "Normalize Google AI",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          -80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'Claude Code Releases';\nconst sourceType = 'primaire';\nconst category = 'cli-release';\nconst tags = ['ia', 'claude-code', 'cli', 'release'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "2ccfb2d9-02dc-42c7-bef9-feb7ae7c20ff",
+        "name": "Normalize Claude Code",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'Codex Releases';\nconst sourceType = 'primaire';\nconst category = 'cli-release';\nconst tags = ['ia', 'codex', 'cli', 'release'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "01c5cb3c-1f80-42ca-b8e5-50d4120ef8f7",
+        "name": "Normalize Codex",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          240
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'Gemini CLI Releases';\nconst sourceType = 'primaire';\nconst category = 'cli-release';\nconst tags = ['ia', 'gemini-cli', 'cli', 'release'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "33f51e12-3dc0-4c2f-91b5-9a0f96e8a2f2",
+        "name": "Normalize Gemini CLI",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          400
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const now = Date.now();\nconst maxAgeMs = 14 * 24 * 60 * 60 * 1000;\nconst prereleasePattern = /\\b(alpha|beta|nightly|rc)\\b/i;\n\nfunction slugify(value) {\n  return String(value ?? '')\n    .toLowerCase()\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .slice(0, 80);\n}\n\nfunction cleanup(value, limit = 1500) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .slice(0, limit);\n}\n\nconst candidates = $input\n  .all()\n  .map((item) => item.json)\n  .filter((item) => item.title && item.url)\n  .filter((item) => {\n    const published = Date.parse(item.published_at || '');\n    if (!Number.isNaN(published) && now - published > maxAgeMs) {\n      return false;\n    }\n    if (item.category === 'cli-release' && prereleasePattern.test(item.title)) {\n      return false;\n    }\n    return true;\n  })\n  .slice(0, 1);\n\nreturn candidates.map((item) => {\n  const datePart = String(item.published_at || new Date().toISOString()).slice(0, 10);\n  const sourceSlug = slugify(item.source_name);\n  const titleSlug = slugify(item.title) || 'entry';\n  const fileName = `${datePart}-${sourceSlug}-${titleSlug}.md`;\n  const rawExcerpt = cleanup(item.raw_excerpt);\n  const summaryPrompt = `Tu es un assistant de veille passive technologique. Reponds uniquement en JSON valide, sans markdown ni texte supplementaire. Utilise exactement ce schema: {\\\"summary_points\\\":[\\\"...\\\",\\\"...\\\",\\\"...\\\"],\\\"points_to_verify\\\":[\\\"...\\\",\\\"...\\\"],\\\"confidence\\\":\\\"high|medium|low\\\",\\\"major_update\\\":true}. Ecris en francais. Base-toi uniquement sur les metadonnees et l'extrait fournis. Si la source est officielle ou une release GitHub officielle, le niveau de confiance est generalement high.\\n\\nSource: ${item.source_name}\\nType: ${item.source_type}\\nCategorie: ${item.category}\\nTitre: ${item.title}\\nURL: ${item.url}\\nPublication: ${item.published_at}\\nExtrait: ${rawExcerpt}`;\n\n  return {\n    json: {\n      ...item,\n      raw_excerpt: rawExcerpt,\n      confidence: item.source_type === 'primaire' ? 'high' : 'medium',\n      fileName,\n      outputPath: `/vault/raw/passive/${fileName}`,\n      summary_prompt: summaryPrompt,\n    },\n  };\n});"
+        },
+        "id": "e7de247f-e3e1-49f4-bbcf-cad0fa2c4ebf",
+        "name": "Filter Candidates",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          900,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://openrouter.ai/api/v1/chat/completions",
+          "sendHeaders": true,
+          "specifyHeaders": "keypair",
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer __OPENROUTER_API_KEY__"
+              },
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "name": "HTTP-Referer",
+                "value": "https://174.138.14.145"
+              },
+              {
+                "name": "X-Title",
+                "value": "Passive News CLI"
+              }
+            ]
+          },
+          "sendBody": true,
+          "contentType": "json",
+          "specifyBody": "json",
+          "jsonBody": "={{ { model: 'google/gemini-2.0-flash-lite-001', models: ['meta-llama/llama-3.3-70b-instruct', 'qwen/qwen-2.5-72b-instruct', 'deepseek/deepseek-chat-v3-0324'], messages: [ { role: 'user', content: $json.summary_prompt } ], response_format: { type: 'json_object' }, temperature: 0.2, max_tokens: 300, provider: { allow_fallbacks: true, sort: { by: 'throughput', partition: 'none' } } } }}",
+          "options": {
+            "lowercaseHeaders": true,
+            "timeout": 30000
+          }
+        },
+        "id": "c9497f95-c518-451f-83ae-2aef310662f2",
+        "name": "Summarize Passive Capture",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          1160,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
+        },
+        "id": "7bcc11fd-40f9-4f30-9990-c375fae25fc2",
+        "name": "Merge Source And Summary",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          1420,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "return $input.all().map((item) => {\n  const response = item.json || {};\n  const text = response?.choices?.[0]?.message?.content || '{}';\n  return { json: { text } };\n});"
+        },
+        "id": "fc8b8c8d-ae85-4fcb-890f-61a19065576c",
+        "name": "Extract Summary Text",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1290,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "function yamlString(value) {\n  const safe = String(value ?? '')\n    .replace(/\\\\/g, '\\\\\\\\')\n    .replace(/\"/g, '\\\\\"');\n  return `\"${safe}\"`;\n}\n\nfunction cleanup(value, limit = 1200) {\n  return String(value ?? '')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .slice(0, limit);\n}\n\nfunction bulletize(values, fallback) {\n  if (!Array.isArray(values) || values.length === 0) {\n    return [`- ${fallback}`];\n  }\n  return values.slice(0, 5).map((value) => `- ${cleanup(value, 220)}`);\n}\n\nconst collectedAt = new Date().toISOString();\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  let parsed = {};\n\n  try {\n    parsed = JSON.parse(json.text || '{}');\n  } catch (error) {\n    parsed = {};\n  }\n\n  const summaryPoints = bulletize(parsed.summary_points, 'Resume IA non structure disponible, a relire manuellement.');\n  const pointsToVerify = bulletize(parsed.points_to_verify, 'Confirmer les details techniques si cette entree devient une vraie note.');\n  const confidence = ['high', 'medium', 'low'].includes(parsed.confidence)\n    ? parsed.confidence\n    : (json.confidence || 'medium');\n  const majorUpdate = typeof parsed.major_update === 'boolean' ? parsed.major_update : false;\n  const title = cleanup(json.title, 300);\n  const excerpt = cleanup(json.raw_excerpt || 'Aucun extrait disponible.', 1500);\n  const tags = Array.isArray(json.tags) ? json.tags : [];\n\n  const markdown = `---\\nkind: passive-capture\\nsource_name: ${yamlString(json.source_name)}\\nsource_type: ${json.source_type}\\ncategory: ${json.category}\\ntags: [${tags.join(', ')}]\\ntitle: ${yamlString(title)}\\nurl: ${yamlString(json.url)}\\npublished_at: ${yamlString(json.published_at)}\\ncollected_at: ${yamlString(collectedAt)}\\nconfidence: ${confidence}\\nmajor_update: ${majorUpdate}\\nworkflow: passive-news-cli\\nstatus: a-traiter\\n---\\n\\n# ${title}\\n\\n## Metadonnees\\n- Source : ${json.source_name}\\n- Type : ${json.source_type}\\n- Categorie : ${json.category}\\n- URL : ${json.url}\\n- Publie le : ${json.published_at}\\n- Collecte le : ${collectedAt}\\n- Niveau de confiance : ${confidence}\\n\\n## Extrait brut\\n${excerpt}\\n\\n## Resume IA preliminaire\\n${summaryPoints.join('\\n')}\\n\\n## Points a verifier\\n${pointsToVerify.join('\\n')}\\n\\n## Action possible\\n- [ ] Decider si cette entree merite une vraie note dans \\`wiki/notes/\\`\\n`;\n\n  return {\n    json: {\n      ...json,\n      collected_at: collectedAt,\n      confidence,\n      major_update: majorUpdate,\n      markdown,\n    },\n  };\n});"
+        },
+        "id": "f87dd87d-7b22-4456-8d09-8d8fe3e76d71",
+        "name": "Build Markdown Capture",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          1680,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "toText",
+          "binaryPropertyName": "data",
+          "sourceProperty": "markdown",
+          "options": {
+            "fileName": "={{$json.outputPath}}",
+            "mimeType": "text/markdown",
+            "encoding": "utf8"
+          }
+        },
+        "id": "343e0a25-44e9-4645-a1af-9c53f3de2198",
+        "name": "Convert Markdown To File",
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1,
+        "position": [
+          1940,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
+        },
+        "id": "5835e0ad-b17f-4c1f-85df-82148e1b3673",
+        "name": "Restore Output Path",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          2070,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "fileName": "={{$json.outputPath}}",
+          "dataPropertyName": "data",
+          "options": {}
+        },
+        "id": "87718038-7493-410e-a6ae-2d2217eb9823",
+        "name": "Write Passive Capture",
+        "type": "n8n-nodes-base.writeBinaryFile",
+        "typeVersion": 1,
+        "position": [
+          2200,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "url": "https://github.com/opencode-ai/opencode/releases.atom",
+          "options": {}
+        },
+        "id": "4a4d2461-c6fd-4efd-91bb-5f3f8c2b2f45",
+        "name": "RSS OpenCode Releases",
+        "type": "n8n-nodes-base.rssFeedRead",
+        "typeVersion": 1.2,
+        "position": [
+          260,
+          560
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "runOnceForAllItems",
+          "language": "javaScript",
+          "jsCode": "const sourceName = 'OpenCode Releases';\nconst sourceType = 'primaire';\nconst category = 'cli-release';\nconst tags = ['ia', 'opencode', 'cli', 'release'];\n\nfunction cleanup(value) {\n  return String(value ?? '')\n    .replace(/<[^>]+>/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nreturn $input.all().map((item) => {\n  const json = item.json;\n  return {\n    json: {\n      source_name: sourceName,\n      source_type: sourceType,\n      category,\n      tags,\n      title: cleanup(json.title || ''),\n      url: json.link || json.url || '',\n      published_at: json.isoDate || json.pubDate || new Date().toISOString(),\n      raw_excerpt: cleanup(json.contentSnippet || json.content || json.summary || json['content:encoded'] || ''),\n      source_id: json.guid || json.id || json.link || json.url || '',\n    },\n  };\n});"
+        },
+        "id": "1f45a26d-7110-49c4-8f22-3db84ca8c3fb",
+        "name": "Normalize OpenCode",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          560,
+          560
+        ]
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "RSS OpenAI News",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Google AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Claude Code Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Codex Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Gemini CLI Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS OpenCode Releases",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Manual Trigger": {
+        "main": [
+          [
+            {
+              "node": "RSS OpenAI News",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Google AI",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Claude Code Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Codex Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS Gemini CLI Releases",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "RSS OpenCode Releases",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS OpenAI News": {
+        "main": [
+          [
+            {
+              "node": "Normalize OpenAI News",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS Google AI": {
+        "main": [
+          [
+            {
+              "node": "Normalize Google AI",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS Claude Code Releases": {
+        "main": [
+          [
+            {
+              "node": "Normalize Claude Code",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS Codex Releases": {
+        "main": [
+          [
+            {
+              "node": "Normalize Codex",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS Gemini CLI Releases": {
+        "main": [
+          [
+            {
+              "node": "Normalize Gemini CLI",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize OpenAI News": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Google AI": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Claude Code": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Codex": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize Gemini CLI": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Filter Candidates": {
+        "main": [
+          [
+            {
+              "node": "Summarize Passive Capture",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Merge Source And Summary",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Summarize Passive Capture": {
+        "main": [
+          [
+            {
+              "node": "Extract Summary Text",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Summary Text": {
+        "main": [
+          [
+            {
+              "node": "Merge Source And Summary",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Merge Source And Summary": {
+        "main": [
+          [
+            {
+              "node": "Build Markdown Capture",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Markdown Capture": {
+        "main": [
+          [
+            {
+              "node": "Convert Markdown To File",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Restore Output Path",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "Convert Markdown To File": {
+        "main": [
+          [
+            {
+              "node": "Restore Output Path",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Restore Output Path": {
+        "main": [
+          [
+            {
+              "node": "Write Passive Capture",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RSS OpenCode Releases": {
+        "main": [
+          [
+            {
+              "node": "Normalize OpenCode",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Normalize OpenCode": {
+        "main": [
+          [
+            {
+              "node": "Filter Candidates",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "binaryMode": "separate"
+    },
+    "staticData": null,
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "pinData": {},
+    "tags": []
+  }
+]

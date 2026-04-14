@@ -43,3 +43,8 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Déplacement des skills de veille dans `skills/` à la racine du repo.
 - Conservation d'un format `SKILL.md` portable pour export vers d'autres agents et CLI.
 - Mise à jour de la documentation d'installation vers `~/.agents/skills`.
+
+## [2026-04-14] methode | Ajout du pipeline de veille du cours
+- Création de `wiki/notes/pipeline-de-veille.md` pour expliciter les étapes `collecte -> tri -> analyse -> synthese -> diffusion`.
+- Ajout d'un schéma Mermaid réutilisable pour la démonstration du système de veille.
+- Mise à jour de `wiki/index.md` pour intégrer cette note de méthode au point d'entrée du vault.

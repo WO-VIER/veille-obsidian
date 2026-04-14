@@ -6,6 +6,7 @@ Bienvenue dans le système de veille.
 *(Toutes les notes Obsidian du système de veille)*
 - [[llm-wiki]] : Le pattern "LLM Wiki", pour gérer sa veille avec l'IA.
 - [[pkm]] : Personal Knowledge Management et distinction entre stockage et gestion.
+- [[pipeline-de-veille]] : Le processus du cours, de la collecte a la diffusion, adapte au vault.
 - [[rag]] : Retrieval-Augmented Generation et ses limites pour une veille cumulative.
 - [[technology-radar]] : Radar personnel des sujets à adopter, expérimenter, surveiller ou ignorer.
 - [[bias-journal]] : Journal des biais cognitifs repérés dans les sources et dans l'analyse.

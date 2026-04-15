@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: wallabag-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - wallabag_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  wallabag:
+    image: wallabag/wallabag:latest
+    container_name: wallabag
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    volumes:
+      - wallabag_images:/var/www/wallabag/web/assets/images
+      - wallabag_data:/var/www/wallabag/data
+
+volumes:
+  wallabag_db_data:
+  wallabag_images:
+  wallabag_data:

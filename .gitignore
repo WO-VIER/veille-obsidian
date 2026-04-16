@@ -2,5 +2,6 @@
 n8n_data/
 .git-auto-sync.log
 *.json
+*.log
 !n8n-workflows/
 !n8n-workflows/*.json

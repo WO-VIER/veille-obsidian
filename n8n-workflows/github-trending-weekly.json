@@ -2,7 +2,7 @@
   {
     "id": "G7sT8vL2mN4pQ6rS",
     "name": "GitHub Trending Weekly",
-    "description": "Recupere GitHub Trending weekly et ecrit un rapport Markdown dans /vault/raw/passive/",
+    "description": "Recupere GitHub Trending weekly et ecrit un rapport Markdown dans /vault/raw/passive/trending/",
     "active": false,
     "isArchived": false,
     "nodes": [

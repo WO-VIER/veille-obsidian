@@ -74,4 +74,4 @@ status: a-traiter
     A specialized Claude Code workspace for creating long-form, SEO-optimized blog content for any business. This system helps you research, write, analyze, and optimize content that ranks well and serves your target audience.
 
 ## Action possible
-- [ ] Decider si un ou plusieurs repositories meritent une vraie note dans `wiki/notes/`
+- [x] Decider si un ou plusieurs repositories meritent une vraie note dans `wiki/notes/`

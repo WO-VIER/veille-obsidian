@@ -2,7 +2,7 @@
 
 ## Metadonnees
 - ID Wallabag: 2
-- Capture: 2026-04-15T21:15:02+00:00
+- Capture: 2026-04-16T08:00:02+00:00
 - URL: https://graphify.net/
 - Domaine: graphify.net
 - Langue: en

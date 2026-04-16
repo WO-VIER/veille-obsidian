@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path("/root/veille-obsidian")
 ENV_FILE = ROOT / "wallabag" / ".env"
-PASSIVE_DIR = ROOT / "veille-vault" / "raw" / "passive"
+ACTIVE_WALLABAG_DIR = ROOT / "veille-vault" / "raw" / "active" / "wallabag"
 
 
 def read_env(path: Path) -> dict[str, str]:
@@ -151,8 +151,8 @@ def main() -> None:
     env = read_env(ENV_FILE)
     username = env.get("WALLABAG_ADMIN_USER", "veille")
 
-    PASSIVE_DIR.mkdir(parents=True, exist_ok=True)
-    chown_if_possible(PASSIVE_DIR)
+    ACTIVE_WALLABAG_DIR.mkdir(parents=True, exist_ok=True)
+    chown_if_possible(ACTIVE_WALLABAG_DIR)
 
     entries = fetch_entries(username)
     captured_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -165,7 +165,7 @@ def main() -> None:
         if not entry_id:
             continue
 
-        output = PASSIVE_DIR / f"wallabag-entry-{entry_id}.md"
+        output = ACTIVE_WALLABAG_DIR / f"wallabag-entry-{entry_id}.md"
         if output.exists():
             skipped += 1
             continue

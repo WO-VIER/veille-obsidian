@@ -120,7 +120,7 @@
             "parameters": [
               {
                 "name": "Authorization",
-                "value": "={{ 'Bearer ' + $env.OPENROUTER_API_KEY }}"
+                "value": "Bearer __OPENROUTER_API_KEY__"
               },
               {
                 "name": "Content-Type",

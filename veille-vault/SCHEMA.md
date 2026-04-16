@@ -19,6 +19,10 @@ veille-vault/
 ├── SCHEMA.md
 ├── raw/
 │   ├── passive/
+│   │   ├── cli/
+│   │   ├── model/
+│   │   ├── provider-news/
+│   │   └── trending/
 │   ├── active/
 │   └── assets/
 └── wiki/
@@ -30,6 +34,13 @@ veille-vault/
 ### `raw/passive/`
 
 Contient les éléments produits automatiquement par la veille passive.
+
+Sous-structure actuelle :
+
+- `raw/passive/cli/` pour les releases d'outils comme `Codex`, `Claude Code`, `Gemini CLI`, `OpenCode` ;
+- `raw/passive/model/` pour les annonces de modeles detectees par workflow dedie ;
+- `raw/passive/provider-news/` pour les news providers plus larges ;
+- `raw/passive/trending/` pour les signaux communautaires comme `GitHub Trending`.
 
 Exemples :
 
@@ -240,7 +251,7 @@ Règle importante :
 ### Veille passive
 
 1. n8n collecte et filtre.
-2. n8n écrit un fichier dans `raw/passive/`.
+2. n8n écrit un fichier dans le sous-dossier pertinent de `raw/passive/`.
 3. l'utilisateur lit ou survole les entrées utiles.
 4. une ou plusieurs entrées deviennent des notes dans `wiki/notes/`.
 

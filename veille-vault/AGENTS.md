@@ -19,6 +19,10 @@ trigger: always_on
 ```text
 raw/
   passive/
+    cli/
+    model/
+    provider-news/
+    trending/
   active/
   assets/
 wiki/
@@ -127,6 +131,8 @@ Regle importante :
 - ne pas creer une note pour chaque micro-release ;
 - si plusieurs captures parlent du meme outil ou du meme theme, preferer une note de synthese ou une note de suivi ;
 - `GitHub Trending` sert surtout de signal, pas de preuve autonome.
+- utiliser le bon sous-dossier passif quand un workflow ecrit une capture :
+  `cli/`, `model/`, `provider-news/` ou `trending/`.
 
 Le fichier `raw/passive/` doit idéalement contenir :
 

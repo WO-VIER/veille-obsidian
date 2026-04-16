@@ -45,7 +45,7 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Mise à jour de la documentation d'installation vers `~/.agents/skills`.
 
 ## [2026-04-14] methode | Ajout du pipeline de veille du cours
-- Création de `wiki/notes/pipeline-de-veille.md` pour expliciter les étapes `collecte -> tri -> analyse -> synthese -> diffusion`.
+- Création de `wiki/notes/pipeline-de-veille.md` pour expliciter les étapes `collecte -> tri -> analyse -> synthèse -> diffusion`.
 - Ajout d'un schéma Mermaid réutilisable pour la démonstration du système de veille.
 - Mise à jour de `wiki/index.md` pour intégrer cette note de méthode au point d'entrée du vault.
 
@@ -60,7 +60,7 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Mise à jour de `wiki/index.md` pour exposer ce template de rédaction depuis le point d'entrée du vault.
 
 ## [2026-04-14] methode | Ajout du pipeline d'incorporation d'une note
-- Création de `wiki/pipeline-incorporation-note.md` pour expliciter le passage `raw/active ou raw/passive -> decision -> wiki/notes/`.
+- Création de `wiki/pipeline-incorporation-note.md` pour expliciter le passage `raw/active ou raw/passive -> décision -> wiki/notes/`.
 - Ajout d'un schéma Mermaid et d'une checklist opérationnelle orientée Obsidian Clipper et veille passive.
 - Mise à jour de `wiki/index.md` pour relier ce pipeline aux autres méthodes du vault.
 
@@ -69,119 +69,119 @@ ce journal est append-only. Certaines entrées anciennes mentionnent l'ancienne 
 - Transformation du brouillon `wiki/LLM wiki et veille.md` en vraie note `wiki/notes/llm-wiki-et-veille.md`.
 - Mise à jour de `wiki/index.md` pour référencer cette nouvelle note et correction du lien Obsidian vers `llm-wiki`.
 
-## [2026-04-14] cadrage | CLI agentiques pour developpeurs
-- Creation de `wiki/notes/cli-agentiques.md` comme note centrale pour le sujet de veille.
-- Selection d'un noyau de sources passives sur `Codex`, `Claude Code`, `Gemini CLI` et `GitHub Trending`.
-- Ajout de sources actives communautaires `Reddit` comme signaux complementaires, sans les traiter comme preuves principales.
-- Mise a jour de `wiki/index.md` pour referencer cette note de cadrage.
+## [2026-04-14] cadrage | CLI agentiques pour développeurs
+- Création de `wiki/notes/cli-agentiques.md` comme note centrale pour le sujet de veille.
+- Sélection d'un noyau de sources passives sur `Codex`, `Claude Code`, `Gemini CLI` et `GitHub Trending`.
+- Ajout de sources actives communautaires `Reddit` comme signaux complémentaires, sans les traiter comme preuves principales.
+- Mise à jour de `wiki/index.md` pour référencer cette note de cadrage.
 
 ## [2026-04-14] [ACTIVE] ingest | Comparaison communautaire des CLI coding agents
 - Lecture de `raw/active/Reddit/I compared all 6 major CLI coding agents.md`.
-- Mise a jour de `wiki/notes/cli-agentiques.md` pour integrer les criteres de comparaison issus du terrain : prix, ouverture, backends, support `MCP` et usages hybrides.
+- Mise à jour de `wiki/notes/cli-agentiques.md` pour intégrer les critères de comparaison issus du terrain : prix, ouverture, backends, support `MCP` et usages hybrides.
 - Conservation du statut communautaire de la source, avec mention explicite de ses limites et des corrections apparues dans les commentaires.
 
 ## [2026-04-14] [PASSIVE] ingest | Notes satellites des CLI agentiques
-- Creation de `wiki/notes/codex.md`, `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` comme notes de suivi appendables par outil.
-- Incorporation des captures passives principales pour chaque outil dans une section `Mises a jour`.
-- Mise a jour de `wiki/notes/cli-agentiques.md` pour relier la note centrale aux trois notes satellites.
-- Mise a jour de `wiki/index.md` pour referencer ces nouvelles notes.
+- Création de `wiki/notes/codex.md`, `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` comme notes de suivi appendables par outil.
+- Incorporation des captures passives principales pour chaque outil dans une section `Mises à jour`.
+- Mise à jour de `wiki/notes/cli-agentiques.md` pour relier la note centrale aux trois notes satellites.
+- Mise à jour de `wiki/index.md` pour référencer ces nouvelles notes.
 
 ## [2026-04-15] [ACTIVE] ingest | Documentation officielle Claude Code et Gemini CLI
-- Ajout de `raw/active/Official/claude-code-official-docs.md` comme bundle de documentation officielle sur le positionnement, les settings et l'usage des donnees.
+- Ajout de `raw/active/Official/claude-code-official-docs.md` comme bundle de documentation officielle sur le positionnement, les settings et l'usage des données.
 - Ajout de `raw/active/Official/gemini-cli-official-docs.md` comme bundle de documentation officielle sur l'overview, l'authentification et le README du projet.
-- Mise a jour de `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` pour integrer les apports des sources officielles.
+- Mise à jour de `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` pour intégrer les apports des sources officielles.
 - Correction des liens de la section `Sources & Outils` dans `wiki/index.md`.
 
 ## [2026-04-15] [PASSIVE] ingest | Nouvelles captures Claude Code et Gemini CLI
 - Ajout local des captures passives `2026-04-15-claude-code-releases-v2-1-109.md` et `2026-04-14-gemini-cli-releases-release-v0-39-0-preview-0.md`.
-- Mise a jour des notes satellites `claude-code.md` et `gemini-cli.md` pour integrer ces nouveaux signaux de release.
+- Mise à jour des notes satellites `claude-code.md` et `gemini-cli.md` pour intégrer ces nouveaux signaux de release.
 
 ## [2026-04-15] [ACTIVE] ingest | Documentation officielle Codex
-- Ajout de `raw/active/Official/codex-official-docs.md` a partir de sources OpenAI officielles sur la `CLI`, l'annonce initiale et la general availability.
-- Mise a jour de `wiki/notes/codex.md` pour integrer le positionnement officiel de `Codex`, son lien avec `AGENTS.md` et son extension vers `Slack`, `SDK` et l'administration.
-- Mise a jour de `wiki/index.md` pour referencer cette source active officielle.
+- Ajout de `raw/active/Official/codex-official-docs.md` à partir de sources OpenAI officielles sur la `CLI`, l'annonce initiale et la general availability.
+- Mise à jour de `wiki/notes/codex.md` pour intégrer le positionnement officiel de `Codex`, son lien avec `AGENTS.md` et son extension vers `Slack`, `SDK` et l'administration.
+- Mise à jour de `wiki/index.md` pour référencer cette source active officielle.
 
 ## [2026-04-16] [PASSIVE] ingest | Nouvelles releases CLI agentiques
 - Synchronisation locale des nouvelles captures passives depuis le VPS : `Codex 0.121.0`, `Claude Code v2.1.110`, `Gemini CLI v0.38.1`, `GitHub Trending Weekly 2026-04-15` et `The next evolution of the Agents SDK`.
-- Mise a jour de `wiki/notes/codex.md`, `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` par append dans les sections `Mises a jour`.
-- Mise a jour de `wiki/notes/cli-agentiques.md` avec le signal secondaire `GitHub Trending` autour des skills, harness, memoires et agents geres.
-- Correction de liens relatifs vers la source active `raw/active/Github/llm-wiki.md` dans les notes concernees.
-- La capture `Trusted Access for Cyber` est laissee en source passive non ingeree pour ce sujet, car elle est hors perimetre de la presentation CLI agentiques.
+- Mise à jour de `wiki/notes/codex.md`, `wiki/notes/claude-code.md` et `wiki/notes/gemini-cli.md` par append dans les sections `Mises à jour`.
+- Mise à jour de `wiki/notes/cli-agentiques.md` avec le signal secondaire `GitHub Trending` autour des skills, harness, mémoires et agents gérés.
+- Correction de liens relatifs vers la source active `raw/active/Github/llm-wiki.md` dans les notes concernées.
+- La capture `Trusted Access for Cyber` est laissée en source passive non ingérée pour ce sujet, car elle est hors périmètre de la présentation CLI agentiques.
 
 ## [2026-04-16] [PASSIVE] ingest | Signal ecosysteme Gemini 3.1 Flash TTS
 - Synchronisation locale de `raw/passive/provider-news/2026-04-15-google-ai-blog-gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech.md`.
-- Creation de `wiki/notes/gemini.md` comme note de contexte sur l'ecosysteme Gemini.
-- Retrait du signal `Gemini 3.1 Flash TTS` de `wiki/notes/gemini-cli.md` pour garder une separation claire entre l'ecosysteme Gemini et l'outil `Gemini CLI`.
-- Mise a jour de `wiki/index.md` pour referencer cette nouvelle note.
+- Création de `wiki/notes/gemini.md` comme note de contexte sur l'écosystème Gemini.
+- Retrait du signal `Gemini 3.1 Flash TTS` de `wiki/notes/gemini-cli.md` pour garder une séparation claire entre l'écosystème Gemini et l'outil `Gemini CLI`.
+- Mise à jour de `wiki/index.md` pour référencer cette nouvelle note.
 
 ## [2026-04-16] workflow | Separation CLI releases et model releases
 - Correction du flux OpenCode dans `n8n-workflows/passive-news-cli.json` : remplacement de `opencode-ai/opencode` par `anomalyco/opencode`.
-- Verification du flux Atom `https://github.com/anomalyco/opencode/releases.atom` depuis le VPS.
-- Creation de `n8n-workflows/passive-model-releases.json` pour collecter separement les annonces de modeles par provider.
-- Objectif : garder les releases CLI dans le workflow CLI, et isoler les signaux modeles dans des captures `category: model-release`.
+- Vérification du flux Atom `https://github.com/anomalyco/opencode/releases.atom` depuis le VPS.
+- Création de `n8n-workflows/passive-model-releases.json` pour collecter séparément les annonces de modèles par provider.
+- Objectif : garder les releases CLI dans le workflow CLI, et isoler les signaux modèles dans des captures `category: model-release`.
 - Import dans n8n du nouveau workflow `Passive Model Releases`.
-- Reimport de `Passive News CLI` avec selection d'une capture recente par source, pour eviter qu'une seule source masque `OpenCode`.
+- Réimport de `Passive News CLI` avec sélection d'une capture récente par source, pour éviter qu'une seule source masque `OpenCode`.
 - Correction du header OpenRouter dans `Passive News CLI` pour utiliser `$env.OPENROUTER_API_KEY` au lieu d'un placeholder.
 
 ## [2026-04-16] workflow | Separation provider news hors du workflow CLI
 - Renommage fonctionnel de `Passive News CLI` en `Passive CLI Releases`.
-- Retrait des flux `OpenAI News` et `Google AI Blog` du workflow CLI afin de reduire le bruit dans la veille sur les CLI agentiques.
-- Creation de `n8n-workflows/passive-provider-news.json` pour conserver les news providers dans un workflow separe.
+- Retrait des flux `OpenAI News` et `Google AI Blog` du workflow CLI afin de réduire le bruit dans la veille sur les CLI agentiques.
+- Création de `n8n-workflows/passive-provider-news.json` pour conserver les news providers dans un workflow séparé.
 - Import dans n8n de `Passive CLI Releases` et `Passive Provider News`.
-- Etat cible : `Passive CLI Releases` pour les releases d'outils, `Passive Model Releases` pour les modeles, `Passive Provider News` pour les annonces generales providers.
+- État cible : `Passive CLI Releases` pour les releases d'outils, `Passive Model Releases` pour les modèles, `Passive Provider News` pour les annonces générales providers.
 
 ## [2026-04-16] workflow | Correction OpenRouter sans acces `$env`
-- Correction du probleme `access to env vars denied` dans le node `Summarize Passive Capture`.
-- Les exports versionnes gardent le placeholder `Bearer __OPENROUTER_API_KEY__`.
-- Sur le VPS, l'import n8n est fait via une copie temporaire ou le placeholder est remplace par la valeur de `.env`, puis cette copie temporaire est supprimee.
-- Reimport de `Passive CLI Releases` et `Passive Provider News` apres correction.
+- Correction du problème `access to env vars denied` dans le node `Summarize Passive Capture`.
+- Les exports versionnés gardent le placeholder `Bearer __OPENROUTER_API_KEY__`.
+- Sur le VPS, l'import n8n est fait via une copie temporaire où le placeholder est remplacé par la valeur de `.env`, puis cette copie temporaire est supprimée.
+- Réimport de `Passive CLI Releases` et `Passive Provider News` après correction.
 
 ## [2026-04-16] structure | Sous-dossiers dans raw/passive
-- Creation des sous-dossiers `raw/passive/cli/`, `raw/passive/model/`, `raw/passive/provider-news/` et `raw/passive/trending/`.
-- Deplacement des captures passives existantes dans le bon sous-dossier selon leur nature.
-- Mise a jour des liens des notes et de la documentation du vault vers ces nouveaux chemins.
-- Objectif : mieux separer releases CLI, releases modeles, news providers et signaux communautaires.
+- Création des sous-dossiers `raw/passive/cli/`, `raw/passive/model/`, `raw/passive/provider-news/` et `raw/passive/trending/`.
+- Déplacement des captures passives existantes dans le bon sous-dossier selon leur nature.
+- Mise à jour des liens des notes et de la documentation du vault vers ces nouveaux chemins.
+- Objectif : mieux séparer releases CLI, releases modèles, news providers et signaux communautaires.
 
 ## [2026-04-16] workflow | Correction du schedule Passive Model Releases
-- Correction d'un intervalle invalide dans `Passive Model Releases` : `hoursInterval: 24` etait refuse par n8n.
+- Correction d'un intervalle invalide dans `Passive Model Releases` : `hoursInterval: 24` était refusé par n8n.
 - Alignement sur un intervalle valide de `12` heures.
-- Reimport du workflow dans n8n apres correction.
+- Réimport du workflow dans n8n après correction.
 
 ## [2026-04-16] workflow | Snapshot manuel des derniers modeles providers
-- Creation de `n8n-workflows/manual-provider-models-snapshot.json`.
-- Ce workflow est declenche manuellement et ne depend pas de la fraicheur d'une actu recente.
-- Objectif : recuperer les derniers modeles visibles par provider et peupler `raw/passive/model/`.
+- Création de `n8n-workflows/manual-provider-models-snapshot.json`.
+- Ce workflow est déclenché manuellement et ne dépend pas de la fraîcheur d'une actu récente.
+- Objectif : récupérer les derniers modèles visibles par provider et peupler `raw/passive/model/`.
 - Ajout initial de trois captures de snapshot : `openai`, `anthropic` et `google`.
 
 ## [2026-04-16] workflow | Correction runtime du snapshot manuel provider
-- Correction du workflow `Manual Provider Models Snapshot` apres erreur `fetch is not defined` dans le node Code.
-- Remplacement du fetch dans le Code node par trois nodes `HTTP Request` dedies : OpenAI, Anthropic et Google.
-- Le Code node ne fait plus que parser les reponses et construire les captures Markdown.
-- Reimport du workflow corrige dans n8n.
+- Correction du workflow `Manual Provider Models Snapshot` après erreur `fetch is not defined` dans le node Code.
+- Remplacement du fetch dans le Code node par trois nodes `HTTP Request` dédiés : OpenAI, Anthropic et Google.
+- Le Code node ne fait plus que parser les réponses et construire les captures Markdown.
+- Réimport du workflow corrigé dans n8n.
 
 ## [2026-04-16] workflow | Correction 403 OpenAI dans snapshot manuel provider
-- Correction du workflow `Manual Provider Models Snapshot` apres erreur 403 sur `https://platform.openai.com/docs/models`.
+- Correction du workflow `Manual Provider Models Snapshot` après erreur 403 sur `https://platform.openai.com/docs/models`.
 - Retrait du node `HTTP OpenAI Models`.
-- OpenAI utilise maintenant une liste statique de modeles visibles dans la capture initiale, tandis que Anthropic et Google restent recuperes par `HTTP Request`.
-- Reimport du workflow corrige dans n8n.
+- OpenAI utilise maintenant une liste statique de modèles visibles dans la capture initiale, tandis que Anthropic et Google restent récupérés par `HTTP Request`.
+- Réimport du workflow corrigé dans n8n.
 
 ## [2026-04-16] workflow | Snapshot manuel providers via OpenRouter
 - Remplacement de la liste statique OpenAI par un fetch dynamique de `https://openrouter.ai/api/v1/models`.
 - Simplification de `Manual Provider Models Snapshot` : un node `HTTP OpenRouter Models`, puis parsing par provider dans un node Code.
 - Le workflow produit une capture par provider (`openai`, `anthropic`, `google`) dans `raw/passive/model/`.
-- Validation locale du parser avec la reponse OpenRouter reelle, puis reimport dans n8n.
+- Validation locale du parser avec la réponse OpenRouter réelle, puis réimport dans n8n.
 
 ## [2026-04-16] workflow | Correction ecriture snapshot modeles
-- Correction du node `Write Model Snapshot Capture` apres erreur `Cannot read properties of undefined (reading 'toString')`.
+- Correction du node `Write Model Snapshot Capture` après erreur `Cannot read properties of undefined (reading 'toString')`.
 - Ajout d'un node `Restore Output Path` entre `Convert Markdown To File` et `Write Model Snapshot Capture`.
-- Alignement du pattern d'ecriture sur les workflows passifs existants qui convertissent le Markdown en binaire puis restaurent les metadonnees JSON.
-- Reimport du workflow corrige dans n8n.
+- Alignement du pattern d'écriture sur les workflows passifs existants qui convertissent le Markdown en binaire puis restaurent les métadonnées JSON.
+- Réimport du workflow corrigé dans n8n.
 
 ## [2026-04-16] sync | Reconciliation local, VPS et GitHub
-- Sauvegarde de l'etat local avant synchronisation dans `_sync-backups/`.
-- Reconciliation depuis une worktree propre basee sur `origin/main` pour eviter un pull destructif sur le depot local sale.
-- Conservation de l'infrastructure GitHub/VPS existante : scripts d'auto-sync, workflows n8n et captures passives deja suivies.
-- Regle de merge retenue : `wiki/` et `raw/active/` viennent du local, `raw/passive/` vient du VPS/GitHub.
-- Realignement du vault sur la structure du cours : les notes finales restent dans `wiki/notes/`, pas a la racine du vault.
-- Ajout des sources actives locales liees a la veille CLI agentiques dans `raw/active/`.
-- Ajout de `veille-vault/.obsidian/` au `.gitignore` pour eviter de versionner la configuration locale de l'editeur.
+- Sauvegarde de l'état local avant synchronisation dans `_sync-backups/`.
+- Réconciliation depuis une worktree propre basée sur `origin/main` pour éviter un pull destructif sur le dépôt local sale.
+- Conservation de l'infrastructure GitHub/VPS existante : scripts d'auto-sync, workflows n8n et captures passives déjà suivies.
+- Règle de merge retenue : `wiki/` et `raw/active/` viennent du local, `raw/passive/` vient du VPS/GitHub.
+- Réalignement du vault sur la structure du cours : les notes finales restent dans `wiki/notes/`, pas à la racine du vault.
+- Ajout des sources actives locales liées à la veille CLI agentiques dans `raw/active/`.
+- Ajout de `veille-vault/.obsidian/` au `.gitignore` pour éviter de versionner la configuration locale de l'éditeur.

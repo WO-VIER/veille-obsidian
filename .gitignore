@@ -9,3 +9,10 @@ veille-vault/.obsidian/
 *.log
 !n8n-workflows/
 !n8n-workflows/*.json
+
+# Presentation Slidev
+presentation/node_modules/
+presentation/dist/
+presentation/.slidev/
+!presentation/package.json
+!presentation/package-lock.json

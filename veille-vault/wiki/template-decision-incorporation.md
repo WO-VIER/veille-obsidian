@@ -1,54 +1,54 @@
-# Template de decision d'incorporation
+# Template de décision d'incorporation
 
 ## Usage
 
-Ce template sert a decider si une capture dans `raw/passive/` ou `raw/active/` doit devenir une vraie note dans `wiki/notes/`.
+Ce template sert à décider si une capture dans `raw/passive/` ou `raw/active/` doit devenir une vraie note dans `wiki/notes/`.
 
 Objectif :
 
-- eviter d'incorporer du bruit ;
+- éviter d'incorporer du bruit ;
 - garder seulement les sujets utiles ;
-- suivre une logique coherente avec le cours ;
+- suivre une logique cohérente avec le cours ;
 - transformer une capture en note seulement si elle apporte une vraie valeur.
 
-## Regle simple
+## Règle simple
 
-- si la capture est peu utile ou peu fiable : ne pas creer de note
-- si la capture est interessante mais encore faible : surveiller plus tard
-- si la capture apporte une comprehension, une tendance ou une decision : creer une note
+- si la capture est peu utile ou peu fiable : ne pas créer de note
+- si la capture est intéressante mais encore faible : surveiller plus tard
+- si la capture apporte une compréhension, une tendance ou une décision : créer une note
 
 ## Checklist rapide
 
-Repondre a ces questions avant d'incorporer :
+Répondre à ces questions avant d'incorporer :
 
 - la source est-elle suffisamment fiable ?
 - l'information est-elle vraiment nouvelle ?
 - est-ce utile pour mon sujet de veille ?
-- est-ce que je peux en tirer une action, une decision ou une tendance ?
-- puis-je relier cette future note a d'autres notes du vault ?
+- est-ce que je peux en tirer une action, une décision ou une tendance ?
+- puis-je relier cette future note à d'autres notes du vault ?
 
-Si la reponse est majoritairement `non`, la capture ne devient pas une note.
+Si la réponse est majoritairement `non`, la capture ne devient pas une note.
 
 ## Grille de pertinence
 
-Noter chaque critere de `1` a `5`.
+Noter chaque critère de `1` à `5`.
 
-| Critere | Question |
+| Critère | Question |
 | --- | --- |
-| Utilite | Est-ce utile pour mon travail, mes projets ou mon sujet de veille ? |
-| Nouveaute | Est-ce que j'apprends quelque chose de reellement nouveau ? |
-| Fiabilite | La source est-elle credible et verifiable ? |
-| Actionabilite | Est-ce que cela peut mener a une action concrete ? |
-| Durabilite | Est-ce que cette information sera encore utile dans quelques mois ? |
+| Utilité | Est-ce utile pour mon travail, mes projets ou mon sujet de veille ? |
+| Nouveauté | Est-ce que j'apprends quelque chose de réellement nouveau ? |
+| Fiabilité | La source est-elle crédible et vérifiable ? |
+| Actionnabilité | Est-ce que cela peut mener à une action concrète ? |
+| Durabilité | Est-ce que cette information sera encore utile dans quelques mois ? |
 
 ### Score total
 
-- `0 a 10` : ignorer
-- `11 a 14` : conserver la capture, mais ne pas faire de note pour l'instant
-- `15 a 19` : note possible si le sujet s'insere bien dans le vault
-- `20 a 25` : note recommandee
+- `0 à 10` : ignorer
+- `11 à 14` : conserver la capture, mais ne pas faire de note pour l'instant
+- `15 à 19` : note possible si le sujet s'insère bien dans le vault
+- `20 à 25` : note recommandée
 
-## Decision finale
+## Décision finale
 
 Choisir une seule issue :
 
@@ -61,31 +61,31 @@ Choisir une seule issue :
   - le sujet peut revenir plus tard si d'autres signaux apparaissent
 
 - `Incorporer`
-  - creation ou mise a jour d'une note dans `wiki/notes/`
+  - création ou mise à jour d'une note dans `wiki/notes/`
   - ajout de liens vers les notes connexes
-  - mise a jour de `wiki/index.md`
-  - ajout d'une entree dans `wiki/log.md`
+  - mise à jour de `wiki/index.md`
+  - ajout d'une entrée dans `wiki/log.md`
 
 ## Cas particulier : GitHub Trending
 
-`GitHub Trending` ne doit pas etre incorpore comme une preuve a lui seul.
+`GitHub Trending` ne doit pas être incorporé comme une preuve à lui seul.
 
-Il sert surtout a :
+Il sert surtout à :
 
-- detecter un signal faible ou fort ;
-- faire emerger un sujet ;
+- détecter un signal faible ou fort ;
+- faire émerger un sujet ;
 - orienter une exploration plus profonde.
 
 Donc :
 
-- ne pas creer une note juste parce qu'un repo est populaire ;
-- preferer une note sur la tendance detectee ;
-- mentionner le biais de popularite si la note vient principalement de GitHub Trending.
+- ne pas créer une note juste parce qu'un repo est populaire ;
+- préférer une note sur la tendance détectée ;
+- mentionner le biais de popularité si la note vient principalement de GitHub Trending.
 
-## Modele a remplir
+## Modèle à remplir
 
 ```md
-# Decision d'incorporation
+# Décision d'incorporation
 
 - Capture source :
 - Date :
@@ -96,23 +96,23 @@ Donc :
 - Nouveau :
 - Utile :
 - Actionnable :
-- Reliable a d'autres notes :
+- Reliable à d'autres notes :
 
 ## Grille de pertinence
-- Utilite :
-- Nouveaute :
-- Fiabilite :
-- Actionabilite :
-- Durabilite :
+- Utilité :
+- Nouveauté :
+- Fiabilité :
+- Actionnabilité :
+- Durabilité :
 - Total :
 
-## Decision
+## Décision
 - Ignorer / Surveiller / Incorporer
 
 ## Si j'incorpore
 - Titre probable de la note :
 - Liens probables :
-- Decision finale dans la note : Adopter / Experimenter / Surveiller / Ignorer
+- Décision finale dans la note : Adopter / Expérimenter / Surveiller / Ignorer
 ```
 
 ## Liens utiles

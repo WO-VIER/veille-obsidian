@@ -9,61 +9,61 @@ Le cours attend un processus de veille structuré qui va de la collecte à la di
 flowchart LR
     A[Collecte] --> B[Tri et priorisation]
     B --> C[Analyse critique]
-    C --> D[Synthese]
+    C --> D[Synthèse]
     D --> E[Diffusion]
 
     A1[RSS / FreshRSS / GitHub / n8n] --> A
     A2[Veille active manuelle] --> A
 
     B1[Signaux faibles ou forts] --> B
-    B2[Utilite / nouveaute / fiabilite / actionabilite / durabilite] --> B
+    B2[Utilité / nouveauté / fiabilité / actionnabilité / durabilité] --> B
 
     C1[5W + H] --> C
     C2[Recherche d'avis contraires] --> C
     C3[Checklist anti-biais] --> C
 
     D1[Note progressive] --> D
-    D2[Fiche de synthese] --> D
-    D3[Decision : adopter / experimenter / surveiller / ignorer] --> D
+    D2[Fiche de synthèse] --> D
+    D3[Décision : adopter / expérimenter / surveiller / ignorer] --> D
 
     E1[Vault Obsidian] --> E
     E2[Technology radar] --> E
     E3[Lightning talk / slides] --> E
 ```
 
-## Comment ce pipeline s'applique a mon systeme
+## Comment ce pipeline s'applique à mon système
 
 - `Collecte`
   - la veille passive arrive par `RSS`, `GitHub Releases` et `GitHub Trending` via `n8n`
-  - les captures automatiques sont stockees dans `raw/passive/`
-  - la veille active est deposee manuellement dans `raw/active/`
+  - les captures automatiques sont stockées dans `raw/passive/`
+  - la veille active est déposée manuellement dans `raw/active/`
 
 - `Tri et priorisation`
   - les captures restent d'abord en `status: a-traiter`
-  - seules les entrees utiles deviennent des notes
-  - `GitHub Trending` sert surtout de detecteur de signaux, pas de preuve a lui seul
+  - seules les entrées utiles deviennent des notes
+  - `GitHub Trending` sert surtout de détecteur de signaux, pas de preuve à lui seul
 
 - `Analyse critique`
-  - chaque sujet retenu doit etre relu avec `5W + H`
-  - la grille de pertinence du cours aide a separer le signal du bruit
-  - les biais doivent etre notes, surtout le biais de popularite sur GitHub Trending
+  - chaque sujet retenu doit être relu avec `5W + H`
+  - la grille de pertinence du cours aide à séparer le signal du bruit
+  - les biais doivent être notés, surtout le biais de popularité sur GitHub Trending
 
-- `Synthese`
+- `Synthèse`
   - la vraie connaissance finale vit dans `wiki/notes/`
   - une note doit reformuler avec ses propres mots
-  - la synthese doit aboutir a une decision claire : `Adopter`, `Experimenter`, `Surveiller` ou `Ignorer`
+  - la synthèse doit aboutir à une décision claire : `Adopter`, `Expérimenter`, `Surveiller` ou `Ignorer`
 
 - `Diffusion`
-  - le vault sert de support de demonstration
-  - `technology-radar.md` aide a visualiser les decisions
-  - la presentation finale peut reprendre ce pipeline comme slide de methode
+  - le vault sert de support de démonstration
+  - `technology-radar.md` aide à visualiser les décisions
+  - la présentation finale peut reprendre ce pipeline comme slide de méthode
 
 ## Pourquoi cette note est importante pour le cours
 
-- elle couvre `AA2` : collecte, analyse, synthese, diffusion
-- elle couvre `AA3` : definition d'un processus de veille structure
-- elle soutient `AA4` : systeme personnel fonctionnel
-- elle aide aussi `DM3` : clarte de la presentation avec un schema simple
+- elle couvre `AA2` : collecte, analyse, synthèse, diffusion
+- elle couvre `AA3` : définition d'un processus de veille structuré
+- elle soutient `AA4` : système personnel fonctionnel
+- elle aide aussi `DM3` : clarté de la présentation avec un schéma simple
 
 ## Liens
 
@@ -75,5 +75,5 @@ flowchart LR
 
 ## Sources
 
-- `5XVTE.md` : grille d'evaluation et acquis d'apprentissage du cours
-- `veille.md` : support de cours sur la collecte, le PKM, l'analyse, la synthese et la diffusion
+- `5XVTE.md` : grille d'évaluation et acquis d'apprentissage du cours
+- `veille.md` : support de cours sur la collecte, le PKM, l'analyse, la synthèse et la diffusion

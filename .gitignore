@@ -1,6 +1,9 @@
 .env
 n8n_data/
 .git-auto-sync.log
+.git-pull-only.log
+.git-commit-tracked.log
+.git-sync.lock
 veille-vault/.obsidian/
 *.json
 *.log

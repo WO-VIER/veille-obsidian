@@ -4,8 +4,15 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BRANCH="${1:-main}"
+LOCK_FILE="$REPO_ROOT/.git-sync.lock"
 
 cd "$REPO_ROOT"
+
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+  echo "[git-pull-only] Un autre sync git est deja en cours."
+  exit 0
+fi
 
 if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   echo "[git-pull-only] Ce dossier n'est pas un depot git: $REPO_ROOT" >&2

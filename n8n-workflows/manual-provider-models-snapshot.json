@@ -2,7 +2,7 @@
   {
     "id": "MnualPr0viderM0delSnap2026",
     "name": "Manual Provider Models Snapshot",
-    "description": "Declenchement manuel pour recuperer les derniers modeles visibles par provider et ecrire une capture par provider dans /vault/raw/passive/model/.",
+    "description": "Declenchement manuel pour recuperer les derniers modeles visibles par provider depuis OpenRouter et ecrire une capture par provider dans /vault/raw/passive/model/.",
     "active": false,
     "isArchived": false,
     "nodes": [
@@ -19,7 +19,7 @@
       },
       {
         "parameters": {
-          "url": "https://platform.openai.com/docs/models",
+          "url": "https://openrouter.ai/api/v1/models",
           "sendHeaders": true,
           "specifyHeaders": "keypair",
           "headerParameters": {
@@ -30,200 +30,40 @@
               },
               {
                 "name": "Accept",
-                "value": "text/html,application/xml,text/xml,*/*"
+                "value": "application/json"
               }
             ]
           },
           "options": {
             "response": {
               "response": {
-                "responseFormat": "text"
+                "responseFormat": "json"
               }
             },
             "timeout": 30000
           }
         },
-        "id": "oa-http",
-        "name": "HTTP OpenAI Models",
+        "id": "or-http",
+        "name": "HTTP OpenRouter Models",
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          260,
-          -160
-        ],
-        "notes": "Provider: openai"
-      },
-      {
-        "parameters": {
-          "url": "https://platform.claude.com/docs/en/docs/models-overview",
-          "sendHeaders": true,
-          "specifyHeaders": "keypair",
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "User-Agent",
-                "value": "manual-provider-models-snapshot/1.0"
-              },
-              {
-                "name": "Accept",
-                "value": "text/html,application/xml,text/xml,*/*"
-              }
-            ]
-          },
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "text"
-              }
-            },
-            "timeout": 30000
-          }
-        },
-        "id": "an-http",
-        "name": "HTTP Anthropic Models",
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.4,
-        "position": [
-          260,
+          280,
           80
-        ],
-        "notes": "Provider: anthropic"
-      },
-      {
-        "parameters": {
-          "url": "https://ai.google.dev/gemini-api/docs/models/gemini",
-          "sendHeaders": true,
-          "specifyHeaders": "keypair",
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "User-Agent",
-                "value": "manual-provider-models-snapshot/1.0"
-              },
-              {
-                "name": "Accept",
-                "value": "text/html,application/xml,text/xml,*/*"
-              }
-            ]
-          },
-          "options": {
-            "response": {
-              "response": {
-                "responseFormat": "text"
-              }
-            },
-            "timeout": 30000
-          }
-        },
-        "id": "gg-http",
-        "name": "HTTP Google Gemini Models",
-        "type": "n8n-nodes-base.httpRequest",
-        "typeVersion": 4.4,
-        "position": [
-          260,
-          320
-        ],
-        "notes": "Provider: google"
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "oa-set-provider",
-                "name": "provider",
-                "value": "openai",
-                "type": "string"
-              },
-              {
-                "id": "oa-set-body",
-                "name": "body",
-                "value": "={{$json.body || $json.data || $json}}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "id": "oa-set",
-        "name": "Set OpenAI Provider",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          540,
-          -160
-        ]
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "an-set-provider",
-                "name": "provider",
-                "value": "anthropic",
-                "type": "string"
-              },
-              {
-                "id": "an-set-body",
-                "name": "body",
-                "value": "={{$json.body || $json.data || $json}}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "id": "an-set",
-        "name": "Set Anthropic Provider",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          540,
-          80
-        ]
-      },
-      {
-        "parameters": {
-          "assignments": {
-            "assignments": [
-              {
-                "id": "gg-set-provider",
-                "name": "provider",
-                "value": "google",
-                "type": "string"
-              },
-              {
-                "id": "gg-set-body",
-                "name": "body",
-                "value": "={{$json.body || $json.data || $json}}",
-                "type": "string"
-              }
-            ]
-          },
-          "options": {}
-        },
-        "id": "gg-set",
-        "name": "Set Google Provider",
-        "type": "n8n-nodes-base.set",
-        "typeVersion": 3.4,
-        "position": [
-          540,
-          320
         ]
       },
       {
         "parameters": {
           "mode": "runOnceForAllItems",
           "language": "javaScript",
-          "jsCode": "const sources = {\n  openai: { provider: 'openai', source_name: 'OpenAI Models', url: 'https://platform.openai.com/docs/models', patterns: ['GPT-5(?:\\\\.\\\\d+)?(?:\\\\s(?:mini|nano|pro|codex))?', 'o\\\\d(?:-pro)?'] },\n  anthropic: { provider: 'anthropic', source_name: 'Anthropic Models', url: 'https://platform.claude.com/docs/en/docs/models-overview', patterns: ['Claude\\\\s(?:Opus|Sonnet|Haiku)\\\\s\\\\d(?:\\\\.\\\\d+)?'] },\n  google: { provider: 'google', source_name: 'Google Gemini Models', url: 'https://ai.google.dev/gemini-api/docs/models/gemini', patterns: ['Gemini\\\\s\\\\d\\\\.\\\\d\\\\s(?:Flash|Pro|Ultra|TTS)', 'gemini-\\\\d\\\\.\\\\d-[a-z0-9\\\\-]+'] },\n};\n\nfunction normalize(text) {\n  return String(text || '').replace(/\\s+/g, ' ').trim();\n}\n\nfunction stripTags(value) {\n  return normalize(String(value || '').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&#39;/g, \"'\").replace(/&nbsp;/g, ' '));\n}\n\nfunction slugify(value) {\n  return String(value || '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');\n}\n\nfunction yamlString(value) {\n  const safe = String(value || '').replace(/\\\\/g, '\\\\\\\\').replace(/\"/g, '\\\\\"');\n  return '\"' + safe + '\"';\n}\n\nconst outputs = [];\nfor (const item of $input.all()) {\n  const providerKey = item.json.provider;\n  const source = sources[providerKey];\n  if (!source) continue;\n  const html = item.json.body || item.json.data || item.json.html || item.json.response || JSON.stringify(item.json);\n  const text = stripTags(html);\n  const models = [];\n  for (const patternText of source.patterns) {\n    const pattern = new RegExp(patternText, 'ig');\n    for (const match of text.matchAll(pattern)) {\n      const model = normalize(match[0]);\n      if (model && !models.includes(model)) models.push(model);\n    }\n  }\n  const latest = models.slice(0, 8);\n  const now = new Date().toISOString();\n  const datePart = now.slice(0, 10);\n  const providerLabel = source.provider.charAt(0).toUpperCase() + source.provider.slice(1);\n  const title = 'Latest ' + providerLabel + ' models snapshot';\n  const fileName = datePart + '-' + slugify(source.provider) + '-latest-models-snapshot.md';\n  const outputPath = '/vault/raw/passive/model/' + fileName;\n  const excerpt = normalize(text.slice(0, 1200)) || 'Aucun extrait disponible.';\n  const markdown = [\n    '---',\n    'kind: passive-capture',\n    'source_name: ' + yamlString(source.source_name),\n    'source_type: primaire',\n    'category: model-snapshot',\n    'provider: ' + source.provider,\n    'signal_type: model-snapshot',\n    'tags: [ia, ' + source.provider + ', model-snapshot]',\n    'title: ' + yamlString(title),\n    'url: ' + yamlString(source.url),\n    'published_at: ' + yamlString(now),\n    'collected_at: ' + yamlString(now),\n    'confidence: high',\n    'major_update: true',\n    'workflow: manual-provider-models-snapshot',\n    'status: a-traiter',\n    '---',\n    '',\n    '# ' + title,\n    '',\n    '## Metadonnees',\n    '- Provider : ' + source.provider,\n    '- Source : ' + source.source_name,\n    '- Type : primaire',\n    '- Categorie : model-snapshot',\n    '- URL : ' + source.url,\n    '- Collecte le : ' + now,\n    '',\n    '## Modeles detectes',\n    ...(latest.length ? latest.map((m) => '- ' + m) : ['- Aucun modele detecte automatiquement.']),\n    '',\n    '## Extrait brut',\n    excerpt,\n    '',\n    '## Resume IA preliminaire',\n    '- Snapshot manuel des derniers modeles visibles pour ' + source.provider + '.',\n    '- Cette capture sert surtout a peupler raw/passive/model/ pour la veille provider.',\n    '',\n    '## Points a verifier',\n    '- Verifier si ces modeles sont bien les plus recents visibles dans la documentation officielle.',\n    '- Decider si une note provider doit etre creee ou mise a jour.',\n    '',\n    '## Action possible',\n    '- [ ] Decider si cette entree merite une mise a jour dans wiki/notes/' + source.provider + '.md ou wiki/notes/modeles-ia.md',\n    ''\n  ].join('\\n');\n  outputs.push({ json: { provider: source.provider, source_name: source.source_name, title, outputPath, markdown } });\n}\nreturn outputs;"
+          "jsCode": "const providerConfigs = {\n  openai: {\n    label: 'OpenAI',\n    source_name: 'OpenRouter Models API - OpenAI',\n    source_url: 'https://openrouter.ai/api/v1/models',\n    match: (model) => String(model.id || '').startsWith('openai/'),\n  },\n  anthropic: {\n    label: 'Anthropic',\n    source_name: 'OpenRouter Models API - Anthropic',\n    source_url: 'https://openrouter.ai/api/v1/models',\n    match: (model) => String(model.id || '').startsWith('anthropic/'),\n  },\n  google: {\n    label: 'Google Gemini',\n    source_name: 'OpenRouter Models API - Google Gemini',\n    source_url: 'https://openrouter.ai/api/v1/models',\n    match: (model) => String(model.id || '').startsWith('google/') && /gemini/i.test(String(model.id || '') + ' ' + String(model.name || '')),\n  },\n};\n\nfunction normalize(text) {\n  return String(text || '').replace(/\\s+/g, ' ').trim();\n}\n\nfunction slugify(value) {\n  return String(value || '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 100);\n}\n\nfunction yamlString(value) {\n  const safe = String(value || '').replace(/\\\\/g, '\\\\\\\\').replace(/\"/g, '\\\\\"');\n  return '\"' + safe + '\"';\n}\n\nfunction createdDate(model) {\n  const created = Number(model.created || 0);\n  if (!created) return 'date inconnue';\n  return new Date(created * 1000).toISOString().slice(0, 10);\n}\n\nconst input = $input.first().json;\nconst models = Array.isArray(input.data) ? input.data : [];\nconst now = new Date().toISOString();\nconst datePart = now.slice(0, 10);\nconst timePart = now.slice(11, 19).replace(/:/g, '');\nconst outputs = [];\n\nfor (const [provider, config] of Object.entries(providerConfigs)) {\n  const selected = models.filter(config.match).sort((a, b) => Number(b.created || 0) - Number(a.created || 0)).slice(0, 8);\n  const title = 'Latest ' + config.label + ' models snapshot';\n  const fileName = datePart + '-' + timePart + '-' + provider + '-latest-models-openrouter-snapshot.md';\n  const outputPath = '/vault/raw/passive/model/' + fileName;\n  const modelLines = selected.length\n    ? selected.map((model) => '- ' + normalize(model.name || model.id) + ' (' + model.id + ', added ' + createdDate(model) + ')')\n    : ['- Aucun modele detecte automatiquement.'];\n  const excerpt = selected.map((model) => normalize((model.name || model.id) + ' - ' + (model.description || '')).slice(0, 220)).join('\\n');\n  const markdown = [\n    '---',\n    'kind: passive-capture',\n    'source_name: ' + yamlString(config.source_name),\n    'source_type: secondaire',\n    'category: model-snapshot',\n    'provider: ' + provider,\n    'signal_type: model-snapshot',\n    'tags: [ia, ' + provider + ', model-snapshot, openrouter]',\n    'title: ' + yamlString(title),\n    'url: ' + yamlString(config.source_url),\n    'published_at: ' + yamlString(now),\n    'collected_at: ' + yamlString(now),\n    'confidence: medium',\n    'major_update: true',\n    'workflow: manual-provider-models-snapshot',\n    'status: a-traiter',\n    '---',\n    '',\n    '# ' + title,\n    '',\n    '## Metadonnees',\n    '- Provider : ' + provider,\n    '- Source : ' + config.source_name,\n    '- Type : secondaire',\n    '- Categorie : model-snapshot',\n    '- URL : ' + config.source_url,\n    '- Collecte le : ' + now,\n    '',\n    '## Modeles detectes',\n    ...modelLines,\n    '',\n    '## Extrait brut',\n    excerpt || 'Aucun extrait disponible.',\n    '',\n    '## Resume IA preliminaire',\n    '- Snapshot manuel des derniers modeles visibles sur OpenRouter pour ' + config.label + '.',\n    '- Cette capture sert a peupler raw/passive/model/ pour la veille provider.',\n    '- OpenRouter est utilise comme agregateur secondaire : verifier les modeles importants contre les docs officielles avant synthese.',\n    '',\n    '## Points a verifier',\n    '- Verifier dans la documentation officielle du provider si ces modeles sont bien les plus recents ou les plus pertinents.',\n    '- Decider si une note provider doit etre creee ou mise a jour.',\n    '',\n    '## Action possible',\n    '- [ ] Decider si cette entree merite une mise a jour dans wiki/notes/' + provider + '.md ou wiki/notes/modeles-ia.md',\n    ''\n  ].join('\\n');\n  outputs.push({ json: { provider, source_name: config.source_name, title, outputPath, markdown } });\n}\nreturn outputs;"
         },
         "id": "parse-models",
-        "name": "Parse Latest Provider Models",
+        "name": "Parse Provider Models From OpenRouter",
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          820,
+          560,
           80
         ]
       },
@@ -243,8 +83,8 @@
         "type": "n8n-nodes-base.convertToFile",
         "typeVersion": 1.1,
         "position": [
-          1100,
-          80
+          840,
+          20
         ]
       },
       {
@@ -258,7 +98,22 @@
         "type": "n8n-nodes-base.writeBinaryFile",
         "typeVersion": 1,
         "position": [
-          1360,
+          1220,
+          80
+        ]
+      },
+      {
+        "parameters": {
+          "mode": "combine",
+          "combineBy": "combineByPosition",
+          "options": {}
+        },
+        "id": "restore-output-path-model-snapshot",
+        "name": "Restore Output Path",
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3,
+        "position": [
+          980,
           80
         ]
       }
@@ -268,101 +123,52 @@
         "main": [
           [
             {
-              "node": "HTTP OpenAI Models",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "HTTP Anthropic Models",
-              "type": "main",
-              "index": 0
-            },
-            {
-              "node": "HTTP Google Gemini Models",
+              "node": "HTTP OpenRouter Models",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "HTTP OpenAI Models": {
+      "HTTP OpenRouter Models": {
         "main": [
           [
             {
-              "node": "Set OpenAI Provider",
+              "node": "Parse Provider Models From OpenRouter",
               "type": "main",
               "index": 0
             }
           ]
         ]
       },
-      "HTTP Anthropic Models": {
-        "main": [
-          [
-            {
-              "node": "Set Anthropic Provider",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "HTTP Google Gemini Models": {
-        "main": [
-          [
-            {
-              "node": "Set Google Provider",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set OpenAI Provider": {
-        "main": [
-          [
-            {
-              "node": "Parse Latest Provider Models",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set Anthropic Provider": {
-        "main": [
-          [
-            {
-              "node": "Parse Latest Provider Models",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Set Google Provider": {
-        "main": [
-          [
-            {
-              "node": "Parse Latest Provider Models",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "Parse Latest Provider Models": {
+      "Parse Provider Models From OpenRouter": {
         "main": [
           [
             {
               "node": "Convert Markdown To File",
               "type": "main",
               "index": 0
+            },
+            {
+              "node": "Restore Output Path",
+              "type": "main",
+              "index": 1
             }
           ]
         ]
       },
       "Convert Markdown To File": {
+        "main": [
+          [
+            {
+              "node": "Restore Output Path",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Restore Output Path": {
         "main": [
           [
             {
@@ -380,7 +186,7 @@
     "staticData": null,
     "meta": null,
     "pinData": {},
-    "versionId": "manual-model-snapshot-v2",
+    "versionId": "manual-model-snapshot-v3-openrouter",
     "triggerCount": 0,
     "tags": []
   }

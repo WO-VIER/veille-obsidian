@@ -4,7 +4,7 @@ Cette note positionne les sujets du vault selon leur niveau de maturité et d'ac
 
 ## Adopter
 
-- [[llm-wiki|LLM Wiki]] : pattern central du système de veille mis en place dans ce vault.
+- [[wiki/notes/llm-wiki|LLM Wiki]] : pattern central du système de veille mis en place dans ce vault.
 
 ## Expérimenter
 

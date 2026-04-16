@@ -71,7 +71,7 @@ flowchart LR
 - [[technology-radar]]
 - [[bias-journal]]
 - [[pkm|PKM]]
-- [[llm-wiki|LLM Wiki]]
+- [[wiki/notes/llm-wiki|LLM Wiki]]
 
 ## Sources
 

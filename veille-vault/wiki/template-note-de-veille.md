@@ -2,7 +2,7 @@
 
 ## Usage
 
-Ce template sert quand une capture a deja passe la phase de decision et merite d'entrer dans `wiki/notes/`.
+Ce Template sert quand une capture a déjà passe la phase de décision et mérite d'entrer dans `wiki/notes/`.
 
 Il doit rester :
 
@@ -63,7 +63,7 @@ Elle doit :
 - [[note-liee-2]]
 
 ## Sources
-- [Capture de depart](../raw/passive/nom-du-fichier.md)
+- [Capture de depart](../raw/passive/cli/nom-du-fichier.md)
 - [Source primaire ou secondaire]
 ```
 

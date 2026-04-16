@@ -19,14 +19,14 @@ La gestion des connaissances personnelles ([[pkm|PKM]]) est souvent abandonnée 
 ## Analyse 5W+H & Pertinence
 - **Who (Qui)** : Concept partagé dans la communauté IA (notamment attribué à Andrej Karpathy).
 - **What (Quoi)** : Utilisation de l'IA pour écrire et maintenir un wiki persistant plutôt que de faire du RAG à la volée.
-- **When (Quand)** : Tendance très actuelle grâce aux LLM de nouvelle génération (Claude 3, GPT-4).
+- **When (Quand)** : Tendance très actuelle grâce aux LLM de nouvelle génération.
 - **Where (Où)** : Écosystème local, souvent couplé à Obsidian.
 - **Why (Pourquoi)** : Le maintien manuel d'un wiki est trop lourd. L'IA ne s'ennuie jamais et maintient la cohérence.
 - **How (Comment)** : L'IA agit comme un programmeur dont le code est le Wiki Markdown, pendant que l'utilisateur joue le rôle de curateur.
 - **Pertinence** : 23/25 (Utilité: 5, Nouveauté: 5, Fiabilité: 4, Actionabilité: 5, Durabilité: 4)
 
 ## Action / Conclusion
-- [x] **Adopter** : C'est le cœur même de notre système actuel pour le cours 5XVTE.
+- [x] **Adopter** : C'est le cœur même de notre système actuel pour le cours.
 
 ## Sources
-- [LLM Wiki (Raw Source)](../../raw/active/llm-wiki.md)
+- [LLM Wiki (Raw Source)](../../raw/active/Github/llm-wiki.md)

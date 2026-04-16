@@ -2,11 +2,11 @@
 
 ## En une phrase
 
-Oui : ce vault respecte bien le pattern [[llm-wiki|LLM Wiki]], parce qu'il sépare les sources brutes, le wiki maintenu par l'IA et les règles de maintenance, tout en adaptant le système au contexte du cours de veille technologique.
+Oui : ce vault respecte bien le pattern [[wiki/notes/llm-wiki|LLM Wiki]], parce qu'il sépare les sources brutes, le wiki maintenu par l'IA et les règles de maintenance, tout en adaptant le système au contexte du cours de veille technologique.
 
 ## Le pattern d'origine
 
-Dans [[llm-wiki|LLM Wiki]], l'idée centrale est simple :
+Dans [[wiki/notes/llm-wiki|LLM Wiki]], l'idée centrale est simple :
 
 - `raw sources` : les documents bruts sont la source de vérité ;
 - `the wiki` : l'IA maintient une couche intermédiaire persistante en Markdown ;
@@ -28,7 +28,7 @@ Les fichiers bruts ne sont pas réécrits par l'IA. Ils restent la base factuell
 
 ### 2. Le wiki est bien une couche maintenue par l'IA
 
-Le dossier `wiki/` joue exactement le rôle du `persistent wiki` décrit dans [[llm-wiki|LLM Wiki]] :
+Le dossier `wiki/` joue exactement le rôle du `persistent wiki` décrit dans [[wiki/notes/llm-wiki|LLM Wiki]] :
 
 - `wiki/notes/` pour les notes de veille, les fiches de synthèse, les notes atomiques et les notes de méthode ;
 - `wiki/index.md` pour garder une vue d'ensemble ;
@@ -96,10 +96,10 @@ Autrement dit, le vault ne sert pas seulement à stocker des documents. Il démo
 
 La bonne formulation est la suivante :
 
-Nous respectons bien [[llm-wiki|LLM Wiki]], mais nous l'avons rendu concret pour un cas d'usage précis : un système personnel de veille technologique, démontrable dans Obsidian, compatible avec n8n, et aligné avec les attentes du cours.
+Nous respectons bien [[wiki/notes/llm-wiki|LLM Wiki]], mais nous l'avons rendu concret pour un cas d'usage précis : un système personnel de veille technologique, démontrable dans Obsidian, compatible avec n8n, et aligné avec les attentes du cours.
 
 ## Sources
 
-- [LLM Wiki (source brute)](../../raw/active/llm-wiki.md)
+- [LLM Wiki (source brute)](../../raw/active/Github/llm-wiki.md)
 - [SCHEMA.md](../../SCHEMA.md)
 - [AGENTS.md](../../AGENTS.md)

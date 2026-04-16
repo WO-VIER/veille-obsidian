@@ -15,6 +15,6 @@ Ce journal sert à repérer les biais cognitifs rencontrés dans les sources, da
 
 ### 2026-04-13
 
-- Sujet : [[llm-wiki|LLM Wiki]]
+- Sujet : [[wiki/notes/llm-wiki|LLM Wiki]]
 - Risque de biais : effet de halo autour d'une idée portée par une figure reconnue.
 - Contre-mesure : traduire l'idée en workflow concret, puis l'évaluer sur sa capacité à produire un système de veille réel et soutenable.

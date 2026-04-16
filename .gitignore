@@ -1,6 +1,7 @@
 .env
 n8n_data/
 .git-auto-sync.log
+veille-vault/.obsidian/
 *.json
 *.log
 !n8n-workflows/

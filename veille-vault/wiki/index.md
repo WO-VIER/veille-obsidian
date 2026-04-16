@@ -4,8 +4,13 @@ Bienvenue dans le système de veille.
 
 ## Notes
 *(Toutes les notes Obsidian du système de veille)*
+- [[cli-agentiques]] : Vue d'ensemble du paysage des CLI agentiques pour developpeurs et des signaux a suivre dans le temps.
+- [[codex]] : Note de suivi appendable sur l'evolution de Codex dans la veille.
+- [[claude-code]] : Note de suivi appendable sur l'evolution de Claude Code dans la veille.
+- [[gemini]] : Note de contexte sur l'ecosysteme Gemini, separee de la note dediee a Gemini CLI.
+- [[gemini-cli]] : Note de suivi appendable sur l'evolution de Gemini CLI dans la veille.
 - [[llm-wiki]] : Le pattern "LLM Wiki", pour gérer sa veille avec l'IA.
-- [[llm-wiki-et-veille]] : Comment le pattern LLM Wiki s'intègre dans un système de veille technologique concret.
+
 - [[pkm]] : Personal Knowledge Management et distinction entre stockage et gestion.
 - [[pipeline-de-veille]] : Le processus du cours, de la collecte a la diffusion, adapte au vault.
 - [[rag]] : Retrieval-Augmented Generation et ses limites pour une veille cumulative.
@@ -21,4 +26,7 @@ Bienvenue dans le système de veille.
 
 ## Sources & Outils
 *(Liste mise à jour automatiquement par l'IA)*
-- [Source Active : LLM Wiki (Andrej Karpathy)](../raw/active/llm-wiki.md)
+- [Source Active : LLM Wiki (Andrej Karpathy)](../raw/active/Github/llm-wiki.md)
+- [Source Active : Codex official docs](../raw/active/Official/codex-official-docs.md)
+- [Source Active : Claude Code official docs](../raw/active/Official/claude-code-official-docs.md)
+- [Source Active : Gemini CLI official docs](../raw/active/Official/gemini-cli-official-docs.md)

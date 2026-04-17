@@ -10,5 +10,9 @@
     "@slidev/cli": "^0.49.0",
     "@slidev/theme-default": "latest",
     "playwright-chromium": "^1.42.0"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.2.20",
+    "@iconify-json/simple-icons": "^1.2.78"
   }
 }

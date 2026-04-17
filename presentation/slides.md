@@ -8,9 +8,10 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
+css: style.css
 ---
 
-# Veille Technologique : CLI Agentiques
+# Veille <simple-icons-obsidian class="inline-block text-purple-400 mr-2"/> Technologique : CLI Agentiques
 ## et Gestion PKM déléguée à l'IA (LLM Wiki)
 
 Présenté par Virgile Wautier - Cours 5XVTE
@@ -127,8 +128,8 @@ layout: default
 - **Surveiller** : Les nouvelles mises à jour et évolutions des workflows en tant que développeur, l'émergence des sous-agents collaboratifs et la gestion de la mémoire.
 
 <div class="mt-6 flex justify-center">
-  <div class="border-2 border-blue-500 bg-blue-50 dark:bg-blue-900/30 p-6 rounded-xl text-center w-3/4">
-    <h2 class="!mt-0 !mb-2 text-blue-600 dark:text-blue-400">Démonstration du système (Live)</h2>
+  <div class="border-2 border-purple-500 bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl text-center w-3/4 shadow-lg">
+    <h2 class="!mt-0 !mb-2 text-purple-600 dark:text-purple-400">Démonstration du système (Live)</h2>
     <p class="text-sm text-left inline-block">
       1. Vue de l'agrégation <strong>n8n</strong> configurée.<br>
       2. Le <strong>Vault Obsidian</strong> structuré (sources <code>raw/</code> et notes <code>wiki/</code>).<br>

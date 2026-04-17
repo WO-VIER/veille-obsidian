@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code&display=swap');
+
+:root {
+  --prism-foreground: #dcddde;
+  --prism-background: #2f3136;
+  --slidev-theme-primary: #7b61ff;
+  --slidev-theme-secondary: #9b86ff;
+}
+
+.slidev-layout {
+  background-color: #202020 !important; /* Obsidian default dark background */
+  color: #dcddde !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #f2f2f2 !important; /* Slightly off-white for better readability */
+  font-weight: 600;
+}
+
+/* Accent colors */
+.text-purple-400 {
+  color: #9b86ff !important;
+}
+
+.text-purple-600 {
+  color: #7b61ff !important;
+}
+
+.border-purple-500 {
+  border-color: #7b61ff !important;
+}
+
+.bg-purple-50 {
+  background-color: rgba(123, 97, 255, 0.05) !important;
+}
+
+.dark\:bg-purple-900\/10 {
+  background-color: rgba(123, 97, 255, 0.1) !important;
+}
+
+/* Code blocks */
+.slidev-code, code {
+  font-family: 'Fira Code', monospace !important;
+}
+
+code {
+  background-color: #2f3136;
+  color: #e3e4e5;
+  padding: 0.1em 0.3em;
+  border-radius: 4px;
+}
+
+/* Fix for icons inside headers */
+h1 svg, h2 svg {
+  vertical-align: middle;
+  margin-top: -0.2em;
+}

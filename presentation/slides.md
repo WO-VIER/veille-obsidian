@@ -30,7 +30,7 @@ layout: default
 
 - **La Solution (LLM Wiki de Karpathy)** : Un modèle où l'IA agit comme le "bibliothécaire" d'un wiki persistant en Markdown : elle lit, résume, crée les liens et met à jour les index. Déléguer cette maintenance lourde (le "bookkeeping") via des skills locaux (`/ingest`, `/query`, `/lint`) libère l'humain de la friction pour se concentrer sur l'analyse critique.
 - **Le Sujet de Veille** : Les CLI Agentiques (Claude Code, Codex, OpenCode, Gemini CLI...).
-- **L'Enjeu** : Mener une **veille continue de l'état de l'art**. Le but n'est pas de prendre une décision finale pour élire "le meilleur" outil, mais de suivre de manière soutenable un écosystème en évolution très rapide.
+- **L'Enjeu** : Mener une **veille continue de l'état de l'art**. Le but n'est pas de prendre une décision finale pour élire "le meilleur" outil, mais de suivre de manière continue un écosystème en évolution très rapide.
 
 <!--
 Notes:
@@ -80,11 +80,11 @@ L'écosystème évolue vers des usages multi-agents et la spécialisation des ou
 
 ::left::
 
-**Acteurs Majeurs (Benchmark Terrain)**
+**Acteurs Majeurs**
 - **Claude Code** : Excellent pour l'architecture complexe, mais fermé, coûteux (lourd en tokens).
 - **Codex** : Plus généreux/efficace sur les tokens, **Open Source** (Apache 2.0).
-- **Gemini CLI** : Le meilleur point d'entrée grâce à son offre gratuite généreuse.
-- **OpenCode / Aider** : Acteurs **Open Source** phares. Liberté totale de modèle. **Approche BYOK** (*Bring Your Own Key*).
+- **Gemini CLI** : Le meilleur point d'entrée grâce à son offre gratuite généreuse,  **Open Source** (Apache 2.0).
+- **OpenCode** : Acteurs **Open Source** phares. Liberté totale de modèle. **Approche BYOK** (*Bring Your Own Key*).
 
 ::right::
 
@@ -125,7 +125,7 @@ layout: default
 **Recommandations**
 - **Adopter** : L'automatisation du PKM via l'approche *LLM Wiki* pour alléger la maintenance du vault.
 - **Expérimenter** : L'utilisation concrète des CLI Agentiques et des Skills IA dans les tâches de développement quotidiennes.
-- **Surveiller** : Les nouvelles mises à jour et évolutions des workflows en tant que développeur, l'émergence des sous-agents collaboratifs et la gestion de la mémoire.
+- **Surveiller** : Les nouvelles mises à jour et évolutions des workflows en tant que développeur, l'émergence des sous-agents collaboratifs.
 
 <div class="mt-6 flex justify-center">
   <div class="border-2 border-purple-500 bg-purple-50 dark:bg-purple-900/10 p-6 rounded-xl text-center w-3/4 shadow-lg">
